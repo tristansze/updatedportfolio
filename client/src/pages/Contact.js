@@ -9,6 +9,9 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 
+// API configuration
+const API_URL = 'http://localhost:5001'; 
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -27,16 +30,22 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/messages', formData);
+      await axios.post(`${API_URL}/api/messages`, formData, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       setStatus({
         type: 'success',
         message: 'Message sent successfully!',
       });
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
+      console.error('Error submitting form:', error);
       setStatus({
         type: 'error',
-        message: 'Failed to send message. Please try again.',
+        message: error.response?.data?.message || 'Failed to send message. Please try again.',
       });
     }
   };

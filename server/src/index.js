@@ -5,8 +5,16 @@ const cors = require('cors');
 
 const app = express();
 
+// CORS configuration
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // MongoDB Connection
@@ -17,10 +25,16 @@ mongoose.connect(process.env.MONGODB_URI, {
 .then(() => console.log('Connected to MongoDB'))
 .catch((err) => console.error('MongoDB connection error:', err));
 
+// Import routes
+const messagesRouter = require('./routes/messages');
+
 // Routes
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the Portfolio API' });
 });
+
+// Use routes
+app.use('/api/messages', messagesRouter);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

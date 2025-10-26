@@ -48,36 +48,45 @@ const Hobbies = () => {
   }, []);
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 8, mb: 8, background: 'linear-gradient(135deg, #181024 0%, #2a1746 100%)', borderRadius: 6, boxShadow: 6, p: { xs: 2, md: 6 }, overflow: 'hidden' }}>
-      <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 700, textAlign: 'center', mb: 4, color: '#fff' }}>
+    <Container maxWidth="lg" sx={{ mt: 8, mb: 8, background: 'linear-gradient(135deg, #181024 0%, #2a1746 100%)', borderRadius: 6, boxShadow: 6, p: { xs: 2, md: 6 }, overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Typography variant="h4" component="h1" gutterBottom sx={{ 
+        fontWeight: 700, 
+        textAlign: 'center', 
+        mb: 4, 
+        color: '#fff',
+        width: '100%',
+        maxWidth: { xs: 'calc(100vw - 60px)', md: 700 },
+        mx: 'auto'
+      }}>
         Interests
       </Typography>
-      <Swiper
-        modules={[Navigation, EffectCoverflow]}
-        navigation
-        effect="coverflow"
-        centeredSlides
-        slidesPerView={3}
-        loop={false}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 100,
-          modifier: 1.5,
-          slideShadows: false,
-        }}
-        style={{ paddingBottom: 60 }}
-        breakpoints={{
-          0: { slidesPerView: 1 },
-          900: { slidesPerView: 3 },
-        }}
-        ref={swiperRef}
-        onSlideChange={() => { userInteracted.current = true; }}
-        onTouchStart={() => { userInteracted.current = true; }}
-        onClick={() => { userInteracted.current = true; }}
-      >
+      <Box sx={{ width: '100%', maxWidth: '100%', overflow: 'hidden', display: 'flex', justifyContent: 'center' }}>
+        <Swiper
+          modules={[Navigation, EffectCoverflow]}
+          navigation
+          effect="coverflow"
+          centeredSlides
+          slidesPerView={3}
+          loop={false}
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 1.2,
+            slideShadows: false,
+          }}
+          style={{ paddingBottom: 60, width: '100%', maxWidth: '100%' }}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            900: { slidesPerView: 3 },
+          }}
+          ref={swiperRef}
+          onSlideChange={() => { userInteracted.current = true; }}
+          onTouchStart={() => { userInteracted.current = true; }}
+          onClick={() => { userInteracted.current = true; }}
+        >
         {hobbies.map((hobby, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={index} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <Box
               className="hobby-card"
               sx={{
@@ -89,9 +98,12 @@ const Hobbies = () => {
                 flexDirection: 'column',
                 alignItems: 'stretch',
                 transition: 'box-shadow 0.3s, transform 0.3s',
-                height: 700,
-                maxWidth: 700,
+                height: { xs: 'auto', md: 700 },
+                minHeight: { xs: 450, md: 700 },
+                maxWidth: { xs: 'calc(100vw - 60px)', md: 700 },
+                width: { xs: 'calc(100vw - 60px)', md: 700 },
                 mx: 'auto',
+                position: 'relative',
                 cursor: 'pointer',
                 '&:hover': {
                   boxShadow: 8,
@@ -102,7 +114,7 @@ const Hobbies = () => {
               <Box
                 sx={{
                   width: '100%',
-                  height: 500,
+                  height: { xs: 350, md: 500 },
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -111,9 +123,10 @@ const Hobbies = () => {
                   borderTopRightRadius: 18,
                   overflow: 'hidden',
                   flexDirection: 'column',
-                  gap: 1,
-                  px: 4,
-                  py: 2,
+                  gap: { xs: 0.5, md: 1 },
+                  px: { xs: 2, md: 4 },
+                  py: { xs: 1, md: 2 },
+                  ml: { xs: 0, md: -5 },
                   position: 'relative',
                   maxWidth: '100%',
                 }}
@@ -123,15 +136,15 @@ const Hobbies = () => {
                   <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
                     {hobby.images.length === 4 ? (
                       /* 2x2 Grid for 4 images */
-                      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 3, justifyContent: 'center' }}>
+                      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: { xs: 2, md: 3 }, justifyContent: 'center' }}>
                         {hobby.images.map((img, i) => (
                           <Avatar 
                             key={i}
                             src={img} 
                             variant="rounded" 
                             sx={{ 
-                              width: 180, 
-                              height: 180, 
+                              width: { xs: 120, md: 180 }, 
+                              height: { xs: 120, md: 180 }, 
                               transition: 'transform 0.3s', 
                               '&:hover': { transform: 'scale(1.1)' },
                               border: '3px solid #6c3fc5',
@@ -148,8 +161,8 @@ const Hobbies = () => {
                           src={hobby.images[0]} 
                           variant="rounded" 
                           sx={{ 
-                            width: 220, 
-                            height: 220, 
+                            width: { xs: 140, md: 220 }, 
+                            height: { xs: 140, md: 220 }, 
                             transition: 'transform 0.3s', 
                             '&:hover': { transform: 'scale(1.1)' },
                             border: '3px solid #6c3fc5',
@@ -157,15 +170,15 @@ const Hobbies = () => {
                           }} 
                         />
                         {/* Bottom two images (smaller) */}
-                        <Box sx={{ display: 'flex', gap: 3, justifyContent: 'center' }}>
+                        <Box sx={{ display: 'flex', gap: { xs: 2, md: 3 }, justifyContent: 'center' }}>
                           {hobby.images.slice(1).map((img, i) => (
                             <Avatar 
                               key={i + 1}
                               src={img} 
                               variant="rounded" 
                               sx={{ 
-                                width: 180, 
-                                height: 180, 
+                                width: { xs: 120, md: 180 }, 
+                                height: { xs: 120, md: 180 }, 
                                 transition: 'transform 0.3s', 
                                 '&:hover': { transform: 'scale(1.1)' },
                                 border: '3px solid #6c3fc5',
@@ -180,15 +193,15 @@ const Hobbies = () => {
                 )}
                 
                 {hobby.albums && (
-                  <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 3, justifyContent: 'center', maxWidth: 400, mx: 'auto' }}>
+                  <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: { xs: 2, md: 3 }, justifyContent: 'center', maxWidth: { xs: 300, md: 400 }, mx: 'auto' }}>
                     {hobby.albums.map((album, i) => (
                       <Tooltip key={i} title={album.name} arrow>
                         <Avatar 
                           src={album.src} 
                           variant="rounded" 
                           sx={{ 
-                            width: 180, 
-                            height: 180, 
+                            width: { xs: 120, md: 180 }, 
+                            height: { xs: 120, md: 180 }, 
                             transition: 'transform 0.3s', 
                             '&:hover': { transform: 'scale(1.05)' },
                             border: '3px solid #6c3fc5',
@@ -204,7 +217,8 @@ const Hobbies = () => {
               <Box
                 sx={{
                   width: '100%',
-                  height: 100,
+                  height: { xs: 'auto', md: 100 },
+                  minHeight: { xs: 100, md: 100 },
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -213,24 +227,38 @@ const Hobbies = () => {
                   borderTopRightRadius: 18,
                   overflow: 'hidden',
                   flexDirection: 'column',
-                  gap: 2,
-                  px: 4,
-                  py: 6,
+                  gap: { xs: 1, md: 2 },
+                  px: { xs: 2, md: 4 },
+                  py: { xs: 3, md: 6 },
+                  ml: { xs: 0, md: -5 },
                   position: 'relative',
                   maxWidth: '100%',
                 }}
               >
-                <Typography variant="h5" sx={{ fontWeight: 700, mb: -2, textAlign: 'center', color: '#fff', letterSpacing: 1, width: '100%' }}>
+                <Typography variant="h5" sx={{ fontWeight: 700, mb: { xs: -1, md: -2 }, textAlign: 'center', color: '#fff', letterSpacing: 1, width: '100%', fontSize: { xs: '1.2rem', md: '1.5rem' } }}>
                   {hobby.title}
                 </Typography>
-                <Typography variant="body1" sx={{ mb: 4, textAlign: 'center', color: '#fff', fontSize: 18, lineHeight: 1.6, px: 1, fontWeight: 500, width: '100%' }}>
+                <Typography variant="body1" sx={{ 
+                  mb: { xs: 2, md: 4 }, 
+                  textAlign: 'center', 
+                  color: '#fff', 
+                  fontSize: { xs: 14, md: 18 }, 
+                  lineHeight: 1.4, 
+                  px: { xs: 0.5, md: 1 }, 
+                  fontWeight: 500, 
+                  width: '100%',
+                  wordWrap: 'break-word',
+                  overflowWrap: 'break-word',
+                  hyphens: 'auto'
+                }}>
                   {hobby.description}
                 </Typography>
               </Box>
             </Box>
           </SwiperSlide>
         ))}
-      </Swiper>
+        </Swiper>
+      </Box>
     </Container>
   );
 };

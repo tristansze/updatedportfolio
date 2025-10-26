@@ -47,7 +47,13 @@ const Extracurriculars = () => {
                 <Typography variant="h6" sx={{ fontWeight: 700, color: '#b9fbc0', mb: 0.5, letterSpacing: 1, fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif' }}>{act.title}</Typography>
                 <Typography variant="subtitle2" sx={{ color: '#b9fbc0', mb: 1, fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif' }}>{act.date}</Typography>
               </Box>
-              <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 4, mb: 2 }}>
+              <Box sx={{ 
+                display: 'flex', 
+                flexDirection: { xs: 'column', md: 'row' }, 
+                alignItems: { xs: 'center', md: 'center' }, 
+                gap: { xs: 3, md: 4 }, 
+                mb: 2 
+              }}>
                 <motion.div
                   whileHover={{ scale: 1.04, boxShadow: '0 8px 32px 0 rgba(108, 63, 197, 0.10)' }}
                   transition={{ type: 'spring', stiffness: 300 }}
@@ -61,8 +67,8 @@ const Extracurriculars = () => {
                     marginBottom: 0,
                     boxShadow: '0 2px 12px 0 rgba(108, 63, 197, 0.06)',
                     border: '1.5px solid #4b2e83',
-                    maxWidth: 320,
-                    width: '100%',
+                    maxWidth: { xs: '100%', md: 320 },
+                    width: { xs: '100%', md: '320px' },
                   }}
                 >
                   <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
@@ -70,8 +76,19 @@ const Extracurriculars = () => {
                     <Typography variant="h6" sx={{ fontWeight: 600, color: '#fff', textAlign: 'center', fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif' }}>{act.org}</Typography>
                   </Box>
                 </motion.div>
-                <Box sx={{ flex: 1, minWidth: 0 }}>
-                  <Typography variant="body1" sx={{ color: '#fff', fontSize: 17, lineHeight: 1.7, textAlign: { xs: 'center', md: 'left' }, fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif' }}>
+                <Box sx={{ 
+                  flex: 1, 
+                  minWidth: 0,
+                  width: { xs: '100%', md: 'auto' }
+                }}>
+                  <Typography variant="body1" sx={{ 
+                    color: '#fff', 
+                    fontSize: 17, 
+                    lineHeight: 1.7, 
+                    textAlign: { xs: 'center', md: 'left' }, 
+                    fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif',
+                    px: { xs: 1, md: 0 }
+                  }}>
                     {act.description}
                   </Typography>
                 </Box>

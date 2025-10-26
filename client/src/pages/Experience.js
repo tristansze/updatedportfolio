@@ -54,7 +54,13 @@ const Experience = () => {
                 <Typography variant="h6" sx={{ fontWeight: 700, color: '#b9fbc0', mb: 0.5, letterSpacing: 1, fontFamily: 'Roboto, Helvetica, Arial, sans-serif' }}>{exp.title}</Typography>
                 <Typography variant="subtitle2" sx={{ color: '#b9fbc0', mb: 1, fontFamily: 'Roboto, Helvetica, Arial, sans-serif' }}>{exp.date}</Typography>
               </Box>
-              <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 4, mb: 2 }}>
+              <Box sx={{ 
+                display: 'flex', 
+                flexDirection: { xs: 'column', md: 'row' }, 
+                alignItems: { xs: 'center', md: 'center' }, 
+                gap: { xs: 3, md: 4 }, 
+                mb: 2 
+              }}>
                 <motion.div
                   whileHover={{ scale: 1.04, boxShadow: '0 8px 32px 0 rgba(108, 63, 197, 0.10)' }}
                   transition={{ type: 'spring', stiffness: 300 }}
@@ -68,8 +74,8 @@ const Experience = () => {
                     marginBottom: 0,
                     boxShadow: '0 2px 12px 0 rgba(108, 63, 197, 0.06)',
                     border: '1.5px solid #4b2e83',
-                    maxWidth: 320,
-                    width: '100%',
+                    maxWidth: { xs: '100%', md: 320 },
+                    width: { xs: '100%', md: '320px' },
                     minHeight: 160,
                   }}
                 >
@@ -78,8 +84,24 @@ const Experience = () => {
                     <Typography variant="h6" sx={{ fontWeight: 600, color: '#fff', textAlign: 'center', fontFamily: 'Roboto, Helvetica, Arial, sans-serif' }}>{exp.company}</Typography>
                   </Box>
                 </motion.div>
-                <Box sx={{ flex: 1, minWidth: 0, minHeight: 160, display: 'flex', alignItems: 'center' }}>
-                  <Typography variant="body1" sx={{ color: '#fff', fontSize: 16, lineHeight: 1.5, textAlign: { xs: 'center', md: 'left' }, fontFamily: 'Roboto, Helvetica, Arial, sans-serif', letterSpacing: 0.5, px: 2, py: 1 }}>
+                <Box sx={{ 
+                  flex: 1, 
+                  minWidth: 0, 
+                  minHeight: { xs: 'auto', md: 160 }, 
+                  display: 'flex', 
+                  alignItems: 'center',
+                  width: { xs: '100%', md: 'auto' }
+                }}>
+                  <Typography variant="body1" sx={{ 
+                    color: '#fff', 
+                    fontSize: 16, 
+                    lineHeight: 1.5, 
+                    textAlign: { xs: 'center', md: 'left' }, 
+                    fontFamily: 'Roboto, Helvetica, Arial, sans-serif', 
+                    letterSpacing: 0.5, 
+                    px: { xs: 1, md: 2 }, 
+                    py: 1 
+                  }}>
                     {exp.description}
                   </Typography>
                 </Box>

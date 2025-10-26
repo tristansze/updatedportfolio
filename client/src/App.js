@@ -10,7 +10,7 @@ import Contact from './pages/Contact';
 import Extracurriculars from './pages/Extracurriculars';
 import Hobbies from './pages/Hobbies';
 import Experience from './pages/Experience';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// Router imports removed - using scroll navigation instead
 
 // Enhanced theme with more modern styling
 const theme = createTheme({

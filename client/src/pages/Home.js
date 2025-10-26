@@ -7,7 +7,7 @@ import CodeIcon from '@mui/icons-material/Code';
 import Lottie from 'lottie-react';
 import computerLottie from '../assets/computerlottie.json';
 
-const illustration = '/images/illustration-laptop.png'; // Place your SVG/PNG illustration here
+// Illustration variable removed - using Lottie animation instead
 
 const roles = [
   'software engineer.',

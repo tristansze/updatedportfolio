@@ -117,7 +117,6 @@ const Projects = () => {
               className="project-card"
               sx={{
                 p: 0,
-                borderRadius: 3,
                 borderRadius: 18,
                 boxShadow: 3,
                 background: 'rgba(40, 20, 60, 0.98)',

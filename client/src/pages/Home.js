@@ -1,161 +1,98 @@
 import React from 'react';
-import { Container, Typography, Box, Button, useTheme } from '@mui/material';
-import { motion } from 'framer-motion';
-import { styled } from '@mui/material/styles';
+import { Container, Typography, Box, IconButton, Stack } from '@mui/material';
+import { TypeAnimation } from 'react-type-animation';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import CodeIcon from '@mui/icons-material/Code';
+import Lottie from 'lottie-react';
+import computerLottie from '../assets/computerlottie.json';
 
-const GradientText = styled(Typography)(({ theme }) => ({
-  background: 'linear-gradient(45deg, #90caf9 30%, #f48fb1 90%)',
-  WebkitBackgroundClip: 'text',
-  WebkitTextFillColor: 'transparent',
-  fontWeight: 700,
-}));
+const illustration = '/images/illustration-laptop.png'; // Place your SVG/PNG illustration here
 
-const AnimatedBox = styled(motion.div)({
-  width: '100%',
-  height: '100%',
-});
+const roles = [
+  'software engineer.',
+  'product builder.',
+  'problem solver.',
+  'tech enthusiast.',
+  'lifelong learner.',
+];
+
+const socialLinks = [
+  {
+    icon: <LinkedInIcon sx={{ fontSize: 36 }} />, url: 'https://linkedin.com/in/tristan-sze', label: 'LinkedIn', color: '#0A66C2'
+  },
+  {
+    icon: <GitHubIcon sx={{ fontSize: 36 }} />, url: 'https://github.com/tristansze', label: 'GitHub', color: '#fff'
+  },
+  {
+    icon: <CodeIcon sx={{ fontSize: 36 }} />, url: 'https://leetcode.com/u/tristansze/', label: 'LeetCode', color: '#FFA116'
+  },
+];
 
 const Home = () => {
-  const theme = useTheme();
-
   return (
     <Box
       sx={{
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'center',
         position: 'relative',
         overflow: 'hidden',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'radial-gradient(circle at center, rgba(144, 202, 249, 0.1) 0%, rgba(19, 47, 76, 0) 70%)',
-          zIndex: 0,
-        },
       }}
     >
-      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center',
-            gap: 4,
-          }}
-        >
-          <AnimatedBox
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <GradientText variant="h1" gutterBottom>
-              Your Name
-            </GradientText>
-          </AnimatedBox>
-
-          <AnimatedBox
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <Typography
-              variant="h4"
-              sx={{
-                color: 'text.secondary',
-                maxWidth: '800px',
-                mx: 'auto',
-                mb: 4,
-              }}
-            >
-              Full Stack Developer | Problem Solver | Tech Enthusiast
-            </Typography>
-          </AnimatedBox>
-
-          <AnimatedBox
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Box
-              sx={{
-                display: 'flex',
-                gap: 2,
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-              }}
-            >
-              <Button
-                variant="contained"
-                size="large"
+      <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'stretch', justifyContent: 'center', minHeight: { xs: '80vh', md: '70vh' }, py: { xs: 6, md: 10 } }}>
+        {/* Dynamic Intro */}
+        <Box sx={{ flex: 2, display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', md: 'flex-start' }, justifyContent: 'center', textAlign: { xs: 'center', md: 'left' }, minWidth: 0, minHeight: 0, pr: { md: 8 }, pl: { md: 4 } }}>
+          <Typography variant="h2" sx={{ fontWeight: 800, color: '#fff', mb: 2, letterSpacing: 1, fontSize: { xs: '2rem', md: '3rem' } }}>
+            Hi, I'm Tristan
+          </Typography>
+          <Typography variant="h4" sx={{ color: '#b9fbc0', fontWeight: 600, mb: 4, minHeight: 60, fontSize: { xs: '1.2rem', md: '2rem' } }}>
+            and I am a{' '}
+            <TypeAnimation
+              sequence={roles.flatMap(role => [role, 1800])}
+              wrapper="span"
+              speed={40}
+              repeat={Infinity}
+              style={{ color: '#b9fbc0', fontWeight: 600 }}
+            />
+          </Typography>
+          <Stack direction="row" spacing={3} sx={{ mt: 2 }}>
+            {socialLinks.map((link, idx) => (
+              <IconButton
+                key={link.label}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
                 sx={{
-                  px: 4,
-                  py: 1.5,
-                  background: 'linear-gradient(45deg, #90caf9 30%, #42a5f5 90%)',
-                  boxShadow: '0 3px 5px 2px rgba(66, 165, 245, .3)',
+                  color: link.color,
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '2px solid',
+                  borderColor: link.color,
+                  borderRadius: 2,
+                  p: 1.5,
+                  transition: 'all 0.2s',
                   '&:hover': {
-                    background: 'linear-gradient(45deg, #42a5f5 30%, #90caf9 90%)',
+                    background: link.color,
+                    color: link.label === 'GitHub' ? '#181024' : '#fff',
+                    borderColor: link.color,
                   },
                 }}
               >
-                View My Work
-              </Button>
-              <Button
-                variant="outlined"
-                size="large"
-                sx={{
-                  px: 4,
-                  py: 1.5,
-                  borderColor: 'primary.main',
-                  color: 'primary.main',
-                  '&:hover': {
-                    borderColor: 'primary.dark',
-                    backgroundColor: 'rgba(144, 202, 249, 0.08)',
-                  },
-                }}
-              >
-                Contact Me
-              </Button>
-            </Box>
-          </AnimatedBox>
-
-          <AnimatedBox
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.6 }}
-          >
-            <Box
-              sx={{
-                mt: 8,
-                display: 'flex',
-                gap: 4,
-                justifyContent: 'center',
-                flexWrap: 'wrap',
-              }}
-            >
-              {['React', 'Node.js', 'MongoDB', 'TypeScript'].map((skill) => (
-                <Box
-                  key={skill}
-                  sx={{
-                    px: 3,
-                    py: 1,
-                    borderRadius: 2,
-                    backgroundColor: 'rgba(144, 202, 249, 0.1)',
-                    backdropFilter: 'blur(8px)',
-                    border: '1px solid rgba(144, 202, 249, 0.2)',
-                  }}
-                >
-                  <Typography variant="body1" color="primary">
-                    {skill}
-                  </Typography>
-                </Box>
-              ))}
-            </Box>
-          </AnimatedBox>
+                {link.icon}
+              </IconButton>
+            ))}
+          </Stack>
+        </Box>
+        {/* Illustration */}
+        <Box sx={{ flex: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', minWidth: 0, minHeight: 0, mt: { xs: 6, md: 0 } }}>
+          <Lottie
+            animationData={computerLottie}
+            style={{ width: '700px', maxWidth: '100%', height: 'auto', background: 'transparent' }}
+            loop={true}
+            autoplay={true}
+          />
         </Box>
       </Container>
     </Box>

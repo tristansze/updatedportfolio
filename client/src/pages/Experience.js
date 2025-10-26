@@ -74,9 +74,9 @@ const Experience = () => {
                     marginBottom: 0,
                     boxShadow: '0 2px 12px 0 rgba(108, 63, 197, 0.06)',
                     border: '1.5px solid #4b2e83',
-                    maxWidth: { xs: '100%', md: 320 },
-                    width: { xs: '100%', md: '320px' },
+                    width: '320px',
                     minHeight: 160,
+                    flexShrink: 0,
                   }}
                 >
                   <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>

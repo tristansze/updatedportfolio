@@ -92,6 +92,7 @@ const Projects = () => {
         navigation
         effect="coverflow"
         centeredSlides
+        initialSlide={3}
         slidesPerView={3}
         loop={false}
         coverflowEffect={{

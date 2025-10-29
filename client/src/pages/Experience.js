@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const experiences = [
   {
     title: 'Software Engineering Intern',
-    company: 'Crown',
+    company: 'Crown Equipment',
     image: '/images/crown.png',
     date: 'August 2025 - Present',
     description: 'At Crown, I am a fullstack developer for the sales team, helping maintain applications used by customers on their sales platform. I utilize Spring, Angular.js, and TypeScript to develop new features, resolve bugs, and work with senior engineers to architect ways to improve the company\'s existing systems.'

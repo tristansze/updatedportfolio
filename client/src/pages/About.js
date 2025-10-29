@@ -2,7 +2,8 @@ import React from 'react';
 import { Container, Typography, Box } from '@mui/material';
 import { motion } from 'framer-motion';
 
-const aboutText = `My name is Tristan Sze and I am a junior at Purdue University where I am pursuing a double major in computer science and economics. I enjoy building software that solves problems and helps others. I am always looking for new opportunities so feel free to connect!`;
+const aboutTextPartOne = `My name is Tristan and I am a junior at Purdue University where I am pursuing a double major in Computer Science and Economics. I have hands-on experience in full-stack development, computer vision, and machine learning, and I’m particularly drawn to the creative power of technology to solve real-world problems and positively impact society.`;
+const aboutTextPartTwo = `My interests lie in building robust applications that are efficient, secure, and thoughtfully designed. Outside the classroom, I enjoy playing soccer, rock climbing, and thrifting. I am always looking for new opportunities to learn, so don't hesitate to connect!`;
 
 const About = () => {
   return (
@@ -17,12 +18,15 @@ const About = () => {
         }}
       >
         {/* About Text */}
-        <Box sx={{ flex: 1, minWidth: 0 }}>
+        <Box sx={{ flex: 1, minWidth: 0, maxWidth: { xs: '50%', md: 650 } }}>
           <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 700, color: '#fff', mb: 3, textAlign: { xs: 'center', md: 'left' } }}>
             About Me
           </Typography>
-          <Typography variant="body1" sx={{ color: '#fff', fontSize: 20, lineHeight: 1.7, textAlign: { xs: 'center', md: 'left' }, fontFamily: 'Roboto, Helvetica, Arial, sans-serif', letterSpacing: 0.5, whiteSpace: 'pre-line' }}>
-            {aboutText}
+          <Typography variant="body1" sx={{ color: '#fff', fontSize: 20, lineHeight: 1.7, textAlign: { xs: 'center', md: 'left' }, fontFamily: 'Roboto, Helvetica, Arial, sans-serif', letterSpacing: 0.5 }}>
+            {aboutTextPartOne}
+          </Typography>
+          <Typography variant="body1" sx={{ mt: 2, color: '#fff', fontSize: 20, lineHeight: 1.7, textAlign: { xs: 'center', md: 'left' }, fontFamily: 'Roboto, Helvetica, Arial, sans-serif', letterSpacing: 0.5 }}>
+            {aboutTextPartTwo}
           </Typography>
         </Box>
         {/* Floating Image */}

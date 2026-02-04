@@ -13,7 +13,8 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import Lottie from 'lottie-react';
 import phoneLottie from '../assets/phonelottie.json';
-// Mock contact form - no backend needed 
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -32,29 +33,36 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Mock submission - simulate API call delay
+
     setStatus({
       type: 'info',
       message: 'Sending message...',
     });
-    
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Always show success (mock)
-    setStatus({
-      type: 'success',
-      message: 'Message sent successfully! I\'ll get back to you soon.',
-    });
-    
-    // Clear form
-    setFormData({ name: '', email: '', message: '' });
-    
-    // Clear success message after 5 seconds
-    setTimeout(() => {
-      setStatus({ type: '', message: '' });
-    }, 5000);
+
+    try {
+      const response = await fetch(`${API_URL}/api/messages`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) throw new Error('Failed to send message');
+
+      setStatus({
+        type: 'success',
+        message: 'Message sent successfully! I\'ll get back to you soon.',
+      });
+      setFormData({ name: '', email: '', message: '' });
+
+      setTimeout(() => {
+        setStatus({ type: '', message: '' });
+      }, 5000);
+    } catch (error) {
+      setStatus({
+        type: 'error',
+        message: 'Failed to send message. Please try again later.',
+      });
+    }
   };
 
   return (

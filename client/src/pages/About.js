@@ -3,7 +3,7 @@ import { Container, Typography, Box } from '@mui/material';
 import { motion } from 'framer-motion';
 
 const aboutTextPartOne = `My name is Tristan and I am a junior at Purdue University where I am pursuing a double major in Computer Science and Economics. I have hands-on experience in full-stack development, computer vision, and machine learning, and I’m particularly drawn to the creative power of technology to solve real-world problems and positively impact society.`;
-const aboutTextPartTwo = `My interests lie in building robust applications that are efficient, secure, and thoughtfully designed. Outside the classroom, I enjoy playing soccer, rock climbing, and thrifting. I am always looking for new opportunities to learn, so don't hesitate to connect!`;
+const aboutTextPartTwo = `In particular, I am interested in distributed systems, backend development, and ]. Outside of the classroom, I enjoy playing soccer, rock climbing, and thrifting. I am always looking for new opportunities to learn, so don't hesitate to connect!`;
 
 const About = () => {
   return (

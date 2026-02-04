@@ -5,14 +5,15 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "seed:images": "node src/seed/seedImages.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-validator": "^7.0.1",
-    "mongodb": "^6.16.0",
+    "mongodb": "^6.21.0",
     "mongoose": "^7.8.7",
     "nodemailer": "^6.9.4"
   },

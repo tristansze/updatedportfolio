@@ -22,7 +22,7 @@ const activities = [
     org: 'BoilerMake',
     image: '/images/boilermake.png',
     date: 'March 2025 - Present',
-    description: 'As an organizer for BoilerMake, Purdue\'s premier hackathon, I work on the development team responsible for maintaining and designing web and mobile apps. These apps provide resources for students before and during the hackathon, including application info, company workshops, and the event schedule.',
+    description: 'As an organizer for BoilerMake, Purdue\'s premier hackathon, I work on the development team responsible for maintaining and designing our web and mobile apps. These apps provide resources for students before and during the hackathon, including application info, company workshops, and the event schedule.',
   },
   {
     title: 'Undergraduate Teaching Assistant',

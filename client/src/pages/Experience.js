@@ -14,7 +14,7 @@ const experiences = [
     title: 'Software Engineering Intern',
     company: 'Battelle',
     image: '/images/battelle.png',
-    date: 'May 2025 - August 2026',
+    date: 'May 2025 - August 2025',
     description: `At Battelle, I developed a scientific workflow web application that improved efficiency across defense labs. My work included building a REST API with C# and ASP.NET. I also designed a scalable data pipeline for automating lab file processing and storage using Amazon S3.`
   },
   {
@@ -36,7 +36,7 @@ const experiences = [
     company: 'Olentangy Local School District',
     image: '/images/olentangy.png',
     date: 'May 2023 - August 2024',
-    description: `During my internship at Olentangy Local School District, I provided IT support by troubleshooting hardware and software issues, setting up new devices, and managing repair tickets. This experience gave me valuable insight into supporting technology in an educational environment.`
+    description: `I provided IT support by troubleshooting hardware and software issues, setting up new devices, and managing repair tickets.`
   },
 ];
 

@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const Image = require('../models/Image');
+const connectDB = require('../db');
 
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 5 * 1024 * 1024 } });
 
 // GET /api/images/:filename - Get image by filename
 router.get('/:filename', async (req, res) => {
     try {
+        await connectDB();
         const image = await Image.findOne({ filename: req.params.filename });
         if (!image) {
             return res.status(404).json({ message: 'Image not found' });
@@ -26,6 +28,7 @@ router.get('/:filename', async (req, res) => {
 // GET /api/images - List all image filenames
 router.get('/', async (req, res) => {
     try {
+        await connectDB();
         const images = await Image.find().select('filename contentType createdAt');
         res.json(images);
     } catch (error) {
@@ -37,6 +40,8 @@ router.get('/', async (req, res) => {
 // POST /api/images - Upload a new image
 router.post('/', upload.single('image'), async (req, res) => {
     try {
+        await connectDB();
+
         if (!req.file) {
             return res.status(400).json({ message: 'No image file provided' });
         }

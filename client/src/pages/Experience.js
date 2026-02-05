@@ -2,42 +2,37 @@ import React from 'react';
 import { Container, Typography, Box, Grid, Avatar } from '@mui/material';
 import { motion } from 'framer-motion';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5050';
+
 const experiences = [
   {
     title: 'Software Engineering Intern',
     company: 'Crown Equipment',
-    image: '/images/crown.png',
+    image: `${API_URL}/api/images/crown.png`,
     date: 'August 2025 - Present',
-    description: 'At Crown, I am a fullstack developer for the sales team, helping maintain applications used by customers on their sales platform. I utilize Spring, Angular.js, and TypeScript to develop new features, resolve bugs, and work with senior engineers to architect ways to improve the company\'s existing systems.'
+    description: 'At Crown, I work as a fullstack developer on our sales team, helping to maintain and improve customer facing applications on our sales platform. I primarily use Springboot, Typescript, and Angular to address bugs, design new features, and update existing systems.'
   },
   {
     title: 'Software Engineering Intern',
     company: 'Battelle',
-    image: '/images/battelle.png',
+    image: `${API_URL}/api/images/battelle.png`,
     date: 'May 2025 - August 2025',
-    description: `At Battelle, I developed a scientific workflow web application that improved efficiency across defense labs. My work included building a REST API with C# and ASP.NET. I also designed a scalable data pipeline for automating lab file processing and storage using Amazon S3.`
+    description: `At Battelle, I developed a Laboratory Information Management System (LIMS) that improved efficiency across several national defense labs. My work revolved around building microservices using C# and ASP.NET and designing a scalable pipeline for automating file processing and storage with Amazon S3.`
   },
   {
     title: 'Undergraduate Research Assistant',
     company: "FACAI Lab @ Purdue",
-    image: '/images/facai.png',
+    image: `${API_URL}/api/images/facai.png`,
     date: 'January 2024 - August 2024',
-    description: `As a research assistant in Purdue's FACAI lab, I worked on projects using machine learning to analyze global forestry data. I developed a KNN model to predict missing data in remote areas and a linear regression model to estimate forest biomass, supporting research on forest health worldwide.`
+    description: `As a research assistant in Purdue's FACAI lab, I utilized Python and R to analyze global forestry data. I contributed to the development of a KNN model used to impute data in remote areas and a linear regression model used to estimate forest biomass, supporting research on forest health worldwide.`
   },
   {
     title: 'Software Engineering Intern',
     company: 'HUMN Capital',
-    image: '/images/humncapital.png',
+    image: `${API_URL}/api/images/humncapital.png`,
     date: 'January 2024 - May 2024',
-    description: `At HUMN Capital, I constructed a sentiment analysis system that processed thousands of minutes of manager-employee meetings. I used OpenCV, TensorFlow, and Keras to recognize emotions and track engagement. I also helped build a React dashboard for managers to visualize performance trends and improve meeting effectiveness.`
-  },
-  {
-    title: 'Information Technology Intern',
-    company: 'Olentangy Local School District',
-    image: '/images/olentangy.png',
-    date: 'May 2023 - August 2024',
-    description: `I provided IT support by troubleshooting hardware and software issues, setting up new devices, and managing repair tickets.`
-  },
+    description: `At HUMN Capital, I deployed a sentiment analysis model with the goal of improving manager efficiency in their 1-1 meetings with employees. Using Tensorflow, OpenCV, and Keras we extracted various emotions that contributed to a score used to evaluate manager effectiveness.`,
+  }
 ];
 
 const Experience = () => {

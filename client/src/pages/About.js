@@ -2,8 +2,10 @@ import React from 'react';
 import { Container, Typography, Box } from '@mui/material';
 import { motion } from 'framer-motion';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5050';
+
 const aboutTextPartOne = `My name is Tristan and I am a junior at Purdue University where I am pursuing a double major in Computer Science and Economics. I have hands-on experience in full-stack development, computer vision, and machine learning, and I’m particularly drawn to the creative power of technology to solve real-world problems and positively impact society.`;
-const aboutTextPartTwo = `In particular, I am interested in distributed systems, backend development, and ]. Outside of the classroom, I enjoy playing soccer, rock climbing, and thrifting. I am always looking for new opportunities to learn, so don't hesitate to connect!`;
+const aboutTextPartTwo = `Currently my passions lie mostly in backend development, distributed systems, and data engineering. Outside of the classroom, I enjoy playing soccer, rock climbing, and thrifting. I am always looking for new opportunities to learn, so don't hesitate to connect!`;
 
 const About = () => {
   return (
@@ -32,7 +34,7 @@ const About = () => {
         {/* Floating Image */}
         <Box sx={{ flex: '0 0 auto', display: 'flex', justifyContent: 'center', alignItems: 'center', mt: { xs: 4, md: 0 } }}>
           <motion.img
-            src={'/images/proheadshot.jpg'}
+            src={`${API_URL}/api/images/proheadshot.jpg`}
             alt="Tristan Sze"
             style={{ 
               width: '320px', 

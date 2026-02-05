@@ -2,32 +2,34 @@ import React from 'react';
 import { Container, Typography, Box, Grid, Avatar } from '@mui/material';
 import { motion } from 'framer-motion';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5050';
+
 const activities = [
   {
     title: 'Department Ambassador',
     org: 'Purdue Computer Science',
-    image: '/images/purduecs.png',
+    image: `${API_URL}/api/images/purduecs.png`,
     date: 'March 2025 - Present',
-    description: `As an ambassador for the department, I host drop-in hours to help students find research opportunities, academic support resources, and review resumes. I also speak at information sessions for prospective students and families, sharing my insights from my time as a student.`
+    description: `As an ambassador for the department, I connect students with departamental resources including undergraduate research, professional development, academic support opportunities. I also speak at information sessions for prospective students and families, sharing my insights from my time as a student.`
   },
   {
     title: 'Treasurer & Initiative Lead',
     org: 'Undergraduate Student Board (USB)',
-    image: '/images/usb.png',
+    image: `${API_URL}/api/images/usb.png`,
     date: 'March 2024 - Present',
-    description: `The Computer Science Undergraduate Student Board serves as a liaison between students and the department, organizing student forums, social events, and drop-in office hours. As Treasurer, I manage club spending and work with the department to receive proper funding.`,
+    description: `The Computer Science Undergraduate Student Board serves as a liaison between students and the department, organizing student forums, social events, and drop-in office hours. As Treasurer, I manage club spending and work with the CS department head to secure club funding.`,
   },
   {
-    title: 'Developer & Event Organizer',
+    title: 'Executive Board',
     org: 'BoilerMake',
-    image: '/images/boilermake.png',
+    image: `${API_URL}/api/images/boilermake.png`,
     date: 'March 2025 - Present',
-    description: 'As an organizer for BoilerMake, Purdue\'s premier hackathon, I work on the development team responsible for maintaining and designing our web and mobile apps. These apps provide resources for students before and during the hackathon, including application info, company workshops, and the event schedule.',
+    description: 'As an organizer for BoilerMake, Purdue\'s premier annual hackathon, I work on the development team responsible for the design and maintenance of our mobile and web applications. These apps provide critical resources for students such as our application portal, event schedule, and company workshop information.',
   },
   {
     title: 'Undergraduate Teaching Assistant',
     org: 'Purdue University',
-    image: '/images/purduelogo.png',
+    image: `${API_URL}/api/images/purduelogo.png`,
     date: 'January 2024 - Present',
     description: `I served as a teaching assistant for CS 180, CS 182, and CS 240 as well as ECON 370 and ECON 210. I proctored exams and quizzes, hosted office hours, and provided additional tutoring to help students understand key concepts and prepare for exams.`,
   }

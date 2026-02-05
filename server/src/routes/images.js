@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
 const Image = require('../models/Image');
+
+const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 5 * 1024 * 1024 } });
 
 // GET /api/images/:filename - Get image by filename
 router.get('/:filename', async (req, res) => {
@@ -28,6 +31,34 @@ router.get('/', async (req, res) => {
     } catch (error) {
         console.error('Error fetching images:', error);
         res.status(500).json({ message: 'Error fetching images' });
+    }
+});
+
+// POST /api/images - Upload a new image
+router.post('/', upload.single('image'), async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ message: 'No image file provided' });
+        }
+
+        const filename = req.body.filename || req.file.originalname;
+
+        const existing = await Image.findOne({ filename });
+        if (existing) {
+            return res.status(409).json({ message: `Image '${filename}' already exists` });
+        }
+
+        const newImage = new Image({
+            filename,
+            data: req.file.buffer.toString('base64'),
+            contentType: req.file.mimetype
+        });
+
+        await newImage.save();
+        res.status(201).json({ message: 'Image uploaded successfully', filename });
+    } catch (error) {
+        console.error('Error uploading image:', error);
+        res.status(500).json({ message: 'Error uploading image' });
     }
 });
 

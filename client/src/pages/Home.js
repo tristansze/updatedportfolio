@@ -11,7 +11,7 @@ import computerLottie from '../assets/computerlottie.json';
 
 const roles = [
   'software engineer.',
-  'product builder.',
+  'backend developer.',
   'problem solver.',
   'tech enthusiast.',
   'lifelong learner.',

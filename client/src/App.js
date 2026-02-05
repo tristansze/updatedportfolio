@@ -90,7 +90,11 @@ function App() {
   const hobbiesRef = useRef(null);
 
   const scrollToSection = (ref) => {
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
+    const element = ref.current;
+    if (!element) return;
+    const navbarHeight = 80;
+    const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: elementPosition - navbarHeight, behavior: 'smooth' });
   };
 
   return (
@@ -122,8 +126,10 @@ function App() {
         // Custom Swiper navigation arrow styling
         '.swiper-button-next, .swiper-button-prev': {
           color: '#b9fbc0 !important',
+          width: '48px !important',
+          height: '48px !important',
           '&:after': {
-            fontSize: '20px !important',
+            fontSize: '18px !important',
             fontWeight: 'bold !important',
           },
           '&:hover': {
@@ -131,14 +137,14 @@ function App() {
           },
         },
         '.swiper-button-next:after, .swiper-button-prev:after': {
-          background: 'rgba(24, 16, 36, 0.8) !important',
-          borderRadius: '50% !important',
-          width: '40px !important',
-          height: '40px !important',
+          background: 'rgba(24, 16, 36, 0.85) !important',
+          borderRadius: '12px !important',
+          width: '48px !important',
+          height: '48px !important',
           display: 'flex !important',
           alignItems: 'center !important',
           justifyContent: 'center !important',
-          border: '2px solid #b9fbc0 !important',
+          border: '1.5px solid #b9fbc0 !important',
           boxShadow: '0 4px 12px rgba(108, 63, 197, 0.3) !important',
         },
       }} />
@@ -254,22 +260,22 @@ function App() {
           <Box ref={homeRef}>
             <Home />
           </Box>
-          <Box ref={aboutRef}>
+          <Box ref={aboutRef} sx={{ pt: 4 }}>
             <About />
           </Box>
-          <Box ref={experienceRef}>
+          <Box ref={experienceRef} sx={{ pt: 6 }}>
             <Experience />
           </Box>
-          <Box ref={projectsRef}>
+          <Box ref={projectsRef} sx={{ pt: 6 }}>
             <Projects />
           </Box>
-          <Box ref={extracurricularsRef}>
+          <Box ref={extracurricularsRef} sx={{ pt: 6 }}>
             <Extracurriculars />
           </Box>
-          <Box ref={hobbiesRef}>
+          <Box ref={hobbiesRef} sx={{ pt: 6 }}>
             <Hobbies />
           </Box>
-          <Box ref={contactRef}>
+          <Box ref={contactRef} sx={{ pt: 6 }}>
             <Contact />
           </Box>
         </Box>

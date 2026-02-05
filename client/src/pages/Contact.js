@@ -14,7 +14,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import Lottie from 'lottie-react';
 import phoneLottie from '../assets/phonelottie.json';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5050';
 
 const Contact = () => {
   const [formData, setFormData] = useState({

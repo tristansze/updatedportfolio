@@ -93,6 +93,7 @@ const Hobbies = () => {
         navigation
         effect="coverflow"
         centeredSlides
+        initialSlide={2}
         slidesPerView={3}
         loop={false}
         coverflowEffect={{

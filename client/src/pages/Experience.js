@@ -10,7 +10,7 @@ const experiences = [
     company: 'Crown Equipment',
     image: `${API_URL}/api/images/crown.png`,
     date: 'August 2025 - Present',
-    description: 'At Crown, I work as a fullstack developer on our sales team, helping to maintain and improve customer facing applications on our sales platform. I primarily use Springboot, Typescript, and Angular to address bugs, design new features, and update existing systems.'
+    description: 'At Crown, I work as a fullstack developer on our sales team, helping to maintain and improve customer facing applications on our sales platform. I primarily use Spring Boot, Typescript, and Angular to address bugs, design new features, and update existing systems.'
   },
   {
     title: 'Software Engineering Intern',

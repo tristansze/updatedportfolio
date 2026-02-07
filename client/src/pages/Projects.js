@@ -27,7 +27,7 @@ const projects = [
   {
     title: 'Motion',
     dates: 'January 2025 - April 2025',
-    description: 'A social web app designed for the daring. Whether it\'s skydiving, exploring a new city, or eating at a new restraunt, Motion makes sharing your experiences with the world easy and accessible. Compete with friends to see who can acquire the most motion',
+    description: 'A social web app designed for the daring. Whether it\'s skydiving, exploring a new city, or eating at a new restaurant, Motion makes sharing your experiences with the world easy and accessible. Continue exploring the world and compete with friends to see who can acquire the most motion!',
     image: `${API_URL}/api/images/motion.png`,
     link: 'https://www.motion.lat',
     tags: ['Typescript', 'Next.js', 'Supabase', 'MongoDB', 'Tailwind', 'Google API'],
@@ -44,14 +44,14 @@ const projects = [
     dates: 'January 2025 - February 2025',
     description: 'A personalized dynamic memory allocator written in C, inspired by malloc. Implements free-list management, coalescing, and splitting strategies to efficiently allocate and reclaim heap memory with minimal fragmentation.',
     image: `${API_URL}/api/images/malloc.png`,
-    tags: ['C', 'Python'],
+    tags: ['C', 'Python', 'Unix'],
   },
   {
     title: 'Compiler',
     dates: 'October 2024 - December 2025',
     description: 'A custom compiler targeting x86-64 assembly language, featuring lexical analysis, parsing, semantic analysis, and code generation. Performance was benchmarked and optimized through a custom C profiler to identify and resolve bottlenecks in the compilation pipeline.',
     image: `${API_URL}/api/images/profiler.png`,
-    tags: ['x86-64 Assembly', 'C', 'Lex', 'Yacc'],
+    tags: ['x86-64 Assembly', 'C', 'Lex', 'Yacc', 'Unix'],
   },
   {
     title: 'PremierZone',
@@ -59,7 +59,7 @@ const projects = [
     description: 'A fantasy sports web app for the English Premier League, gathering real-time data for dynamic team management. Users draft players, track live match stats, and compete on leaderboards throughout the season.',
     image: `${API_URL}/api/images/epl.png`,
     link: 'https://github.com/tristansze/epl',
-    tags: ['SpringBoot', 'Java', 'React.js'],
+    tags: ['Spring Boot', 'Java', 'React.js'],
   },
   {
     title: 'Bumper',

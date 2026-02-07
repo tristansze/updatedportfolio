@@ -11,7 +11,7 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5050';
 const hobbies = [
   {
     title: 'Fitness',
-    description: `I love to stay active! I enjoy playing soccer, rock climbing, and really doing anything that involves the outdoors.`,
+    description: `I love to stay active! I enjoy playing soccer, pickleball, rock climbing, and really doing anything that involves the outdoors.`,
     images: [
       `${API_URL}/api/images/olentangyGame.jpg`,
       `${API_URL}/api/images/hockingclimbing.png`,
@@ -21,7 +21,7 @@ const hobbies = [
   },
   {
     title: 'Music',
-    description: `I love listening to music! I like everything from R&B, to rock, to house and I'm constantly exploring. Here are some of my favorite albums.`,
+    description: `I love listening to music! I like everything from R&B, to rock, to house and I'm constantly exploring new genres. Here are some of my favorite albums.`,
     images: [
       `${API_URL}/api/images/currents.jpeg`,
       `${API_URL}/api/images/rainbowcover.png`,
@@ -32,7 +32,7 @@ const hobbies = [
   },
   {
     title: 'Travel',
-    description: `I love visiting new places and experiencing other cultures. Most recently I visited Vietnam, Japan, and Hawaii.`,
+    description: `I love visiting new places, learning about different cultures, and enjoying delicious food. Most recently I visited Vietnam, Japan, and Hawaii.`,
     images: [
       `${API_URL}/api/images/ninhbinh.jpg`,
       `${API_URL}/api/images/selfiehiroshima.JPG`,
@@ -41,16 +41,29 @@ const hobbies = [
     ],
   },
   {
-    title: 'Anime',
-    description: `In my free time I like watching Anime. Here are some of my go to recommendations.`,
+    title: 'Media',
+    description: `In my free time I enjoy watching movies, tv shows, and anime. Here are some of my favorites.`,
+    portrait: true,
+    titleDown: true,
+    images: [
+      `${API_URL}/api/images/andor.jpeg`,
+      `${API_URL}/api/images/perfectdays.jpeg`,
+      `${API_URL}/api/images/thewindrises.jpeg`,
+      `${API_URL}/api/images/fmab.webp`,
+    ],
+    tooltips: ['Andor', 'Perfect Days', 'The Wind Rises', 'Fullmetal Alchemist: Brotherhood'],
+  },
+  {
+    title: 'Reading',
+    description: `This is a new hobby I've taken up. I enjoy reading a mix of technical and self-improvement books.`,
     portrait: true,
     images: [
-      `${API_URL}/api/images/bebop.jpg`,
-      `${API_URL}/api/images/fmab.webp`,
-      `${API_URL}/api/images/codegeass.jpg`,
-      `${API_URL}/api/images/vinland.jpg`,
+      `${API_URL}/api/images/thepragmatic.jpg`,
+      `${API_URL}/api/images/tuesdays.jpg`,
+      `${API_URL}/api/images/dataintensive.jpg`,
+      `${API_URL}/api/images/breath.jpeg`,
     ],
-    tooltips: ['Cowboy Bebop', 'Fullmetal Alchemist: Brotherhood', 'Code Geass', 'Vinland Saga'],
+    tooltips: ['The Pragmatic Programmer', 'Tuesdays with Morrie', 'Designing Data-Intensive Applications', 'Breath'],
   },
 ];
 
@@ -168,7 +181,7 @@ const Hobbies = () => {
               </Box>
 
               {/* Title & Description */}
-              <Box sx={{ p: 3, pt: 0, mt: -3, maxWidth: 340, mx: 'auto' }}>
+              <Box sx={{ p: 3, pt: 0, mt: hobby.titleDown ? 1 : -3, maxWidth: 340, mx: 'auto' }}>
                 <Typography variant="h5" sx={{ fontWeight: 700, textAlign: 'center', color: '#fff', mb: 0.5, letterSpacing: 0.5 }}>
                   {hobby.title}
                 </Typography>

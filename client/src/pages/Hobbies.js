@@ -63,7 +63,7 @@ const hobbies = [
       `${API_URL}/api/images/dataintensive.jpg`,
       `${API_URL}/api/images/breath.jpeg`,
     ],
-    tooltips: ['The Pragmatic Programmer', 'Tuesdays with Morrie', 'Designing Data-Intensive Applications', 'Breath'],
+    tooltips: ['The Pragmatic Programmer', 'Tuesdays with Morrie', 'Designing Data-Intensive Applications', 'When Breath Becomes Air'],
   },
 ];
 

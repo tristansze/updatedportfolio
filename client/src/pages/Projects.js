@@ -19,10 +19,10 @@ const projects = [
     title: 'Infrastructure Monitoring',
     dates: 'January 2026 - Present',
     description: 'A server monitoring system using Prometheus to track individual health and performance metrics across a cluster of virtual machines. Metrics are aggregated through a centralized Grafana dashboard, providing real-time insights into CPU, memory, disk, and network usage.',
-    image: `${API_URL}/api/images/construction.jpg`,
-    link: '#',
+    image: `${API_URL}/api/images/infraproject.png`,
+    link: 'https://github.com/tristansze/inframonitoring',
     tags: ['Prometheus', 'Grafana', 'Linux', 'Docker'],
-    inProgress: true,
+    inProgress: false,
   },
   {
     title: 'Motion',
@@ -38,13 +38,6 @@ const projects = [
     description: 'A custom command line shell supporting advanced features like piping, subshells, process substitution, and signal handling. Built from scratch to deepen understanding of Unix internals, process management, and systems-level programming.',
     image: `${API_URL}/api/images/vim.png`,
     tags: ['C', 'C++', 'Unix', 'Lex', 'Yacc'],
-  },
-  {
-    title: 'Dynamic Memory Allocator',
-    dates: 'January 2025 - February 2025',
-    description: 'A personalized dynamic memory allocator written in C, inspired by malloc. Implements free-list management, coalescing, and splitting strategies to efficiently allocate and reclaim heap memory with minimal fragmentation.',
-    image: `${API_URL}/api/images/malloc.png`,
-    tags: ['C', 'Python', 'Unix'],
   },
   {
     title: 'Compiler',

@@ -11,13 +11,14 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5050';
 const hobbies = [
   {
     title: 'Fitness',
-    description: `I love to stay active! I enjoy playing soccer, pickleball, rock climbing, and really doing anything that involves the outdoors.`,
+    description: `I love staying active! I enjoy playing soccer, pickleball, rock climbing, and really doing anything that involves getting outdoors.`,
     images: [
       `${API_URL}/api/images/olentangyGame.jpg`,
       `${API_URL}/api/images/hockingclimbing.png`,
       `${API_URL}/api/images/rafting.JPG`,
       `${API_URL}/api/images/haileakala2.png`,
     ],
+    tooltips: ['Soccer', 'Hocking Hills State Park', 'New River Gorge National Park', 'Haileakala National Park'],
   },
   {
     title: 'Music',
@@ -39,10 +40,11 @@ const hobbies = [
       `${API_URL}/api/images/lanikai.png`,
       `${API_URL}/api/images/skydiving.JPG`,
     ],
+    tooltips: ['Ninh Binh, Vietnam', 'Hiroshima, Japan', 'Lanikai, Hawaii', 'North Shore, Hawaii'],
   },
   {
     title: 'Media',
-    description: `In my free time I enjoy watching movies, tv shows, and anime. Here are some of my favorites.`,
+    description: `In my free time I enjoy watching movies, tv shows, and anime. Please let me know if you have any recommendations for what I should watch next.`,
     portrait: true,
     titleDown: true,
     images: [
@@ -55,7 +57,7 @@ const hobbies = [
   },
   {
     title: 'Reading',
-    description: `This is a new hobby I've taken up. I enjoy reading a mix of technical and self-improvement books.`,
+    description: `This is a new hobby which I've taken up. I really enjoy reading a mix of technical and self-improvement books when i can find the time.`,
     portrait: true,
     images: [
       `${API_URL}/api/images/thepragmatic.jpg`,
@@ -182,7 +184,7 @@ const Hobbies = () => {
               </Box>
 
               {/* Title & Description */}
-              <Box sx={{ p: 3, pt: 0, mt: hobby.titleDown ? 1 : -3, maxWidth: 340, mx: 'auto' }}>
+              <Box sx={{ p: 3, pt: 0, mt: -3, maxWidth: 340, mx: 'auto' }}>
                 <Typography variant="h5" sx={{ fontWeight: 700, textAlign: 'center', color: '#fff', mb: 0.5, letterSpacing: 0.5 }}>
                   {hobby.title}
                 </Typography>

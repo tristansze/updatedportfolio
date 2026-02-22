@@ -57,7 +57,7 @@ const hobbies = [
   },
   {
     title: 'Reading',
-    description: `This is a new hobby which I've taken up. I really enjoy reading a mix of technical and self-improvement books when i can find the time.`,
+    description: `This is a new hobby which I've taken up. I really enjoy reading a mix of technical and self-improvement books when I can find the time.`,
     portrait: true,
     images: [
       `${API_URL}/api/images/thepragmatic.jpg`,

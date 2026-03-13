@@ -7,6 +7,15 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5050';
 
 const projects = [
   {
+    title: 'Distributed Database',
+    dates: 'March 2026 - Present',
+    description: 'A distributed key-value database built from scratch in Go. Features a custom Raft consensus implementation handling leader election and log replication across nodes, an HTTP transport layer for inter-node communication, and a write-ahead log (WAL) for crash recovery and durability.',
+    image: `${API_URL}/api/images/construction.jpg`,
+    link: 'https://github.com/tristansze/distributeddatabase',
+    tags: ['Go', 'Raft', 'HTTP', 'WAL'],
+    inProgress: true,
+  },
+  {
     title: 'Harmoniq',
     dates: 'January 2026 - Present',
     description: 'A platform built for music lovers. Harmoniq has it all. Whether it\'s reviewing songs, compiling the perfect playlist, or finding the next song to play on repeat, Harmoniq brings the social aspects of music as close a couple of clicks.',
@@ -17,7 +26,7 @@ const projects = [
   },
   {
     title: 'Infrastructure Monitoring',
-    dates: 'January 2026 - Present',
+    dates: 'January 2026 - March 2026',
     description: 'A server monitoring system using Prometheus to track individual health and performance metrics across a cluster of virtual machines. Metrics are aggregated through a centralized Grafana dashboard, providing real-time insights into CPU, memory, disk, and network usage.',
     image: `${API_URL}/api/images/infraproject.png`,
     link: 'https://github.com/tristansze/inframonitoring',
@@ -45,22 +54,6 @@ const projects = [
     description: 'A custom compiler targeting x86-64 assembly language, featuring lexical analysis, parsing, semantic analysis, and code generation. Performance was benchmarked and optimized through a custom C profiler to identify and resolve bottlenecks in the compilation pipeline.',
     image: `${API_URL}/api/images/profiler.png`,
     tags: ['x86-64 Assembly', 'C', 'Lex', 'Yacc', 'Unix'],
-  },
-  {
-    title: 'PremierZone',
-    dates: 'May 2024 - August 2024',
-    description: 'A fantasy sports web app for the English Premier League, gathering real-time data for dynamic team management. Users draft players, track live match stats, and compete on leaderboards throughout the season.',
-    image: `${API_URL}/api/images/epl.png`,
-    link: 'https://github.com/tristansze/epl',
-    tags: ['Spring Boot', 'Java', 'React.js'],
-  },
-  {
-    title: 'Bumper',
-    dates: 'January 2024 - May 2024',
-    description: 'A personalized study assistant robot and web app, offering synchronized study rooms and AI-powered help. Students can join collaborative rooms, ask questions to an integrated chatbot, and stay on track with built-in productivity tools.',
-    image: `${API_URL}/api/images/robot.png`,
-    link: 'https://github.com/tristansze/chatbot',
-    tags: ['Node.js', 'Express.js', 'React.js', 'OpenAI API'],
   }
 ];
 

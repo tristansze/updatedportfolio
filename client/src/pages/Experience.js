@@ -27,7 +27,7 @@ const experiences = [
     description: `As a research assistant in Purdue's FACAI lab, I utilized Python and R to analyze global forestry data. I contributed to the development of a KNN model used to impute data in remote areas and a linear regression model used to estimate forest biomass, supporting research on forest health worldwide.`
   },
   {
-    title: 'Software Engineering Intern',
+    title: 'Computer Vision Engineer',
     company: 'HUMN Capital',
     image: `${API_URL}/api/images/humncapital.png`,
     date: 'January 2024 - May 2024',

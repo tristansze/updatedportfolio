@@ -6,7 +6,7 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5050';
 
 const activities = [
   {
-    title: 'Department Ambassador',
+    title: 'Computer Science Department Ambassador',
     org: 'Purdue Computer Science',
     image: `${API_URL}/api/images/purduecs.png`,
     date: 'March 2025 - Present',
@@ -40,7 +40,7 @@ const Extracurriculars = () => {
     <Container maxWidth="md" sx={{ mt: 8, mb: 8, position: 'relative', borderRadius: 6, p: { xs: 2, md: 6 }, background: 'linear-gradient(135deg, #181024 0%, #2a1746 100%)', boxShadow: 6, overflow: 'hidden' }}>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 700, textAlign: 'center', mb: 4, color: '#fff', fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif' }}>
-          Extracurricular
+          Leadership
         </Typography>
         <Grid container spacing={6} justifyContent="center">
           {activities.map((act, idx) => (

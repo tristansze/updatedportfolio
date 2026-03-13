@@ -11,7 +11,7 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5050';
 const hobbies = [
   {
     title: 'Fitness',
-    description: `I love staying active! I enjoy playing soccer, pickleball, rock climbing, and really doing anything that involves getting outdoors.`,
+    description: `I love staying active! I do everything from lifting, rock climbing, and running. I really enjoy anything that involves the outdoors.`,
     images: [
       `${API_URL}/api/images/olentangyGame.jpg`,
       `${API_URL}/api/images/hockingclimbing.png`,
@@ -22,7 +22,7 @@ const hobbies = [
   },
   {
     title: 'Music',
-    description: `I love listening to music! I like everything from R&B, to rock, to house and I'm constantly exploring new genres. Here are some of my favorite albums.`,
+    description: `I like everything from R&B, to rock, to house and I'm constantly finding new artists and songs. Here are some of my favorite albums.`,
     images: [
       `${API_URL}/api/images/currents.jpeg`,
       `${API_URL}/api/images/rainbowcover.png`,
@@ -33,7 +33,7 @@ const hobbies = [
   },
   {
     title: 'Travel',
-    description: `I love visiting new places, learning about different cultures, and enjoying delicious food. Most recently I visited Vietnam, Japan, and Hawaii.`,
+    description: `I love visiting new places, learning about different cultures, and enjoying delicious food. I recently visited Japan and Vietnam and before that Hawaii.`,
     images: [
       `${API_URL}/api/images/ninhbinh.jpg`,
       `${API_URL}/api/images/selfiehiroshima.JPG`,
@@ -44,7 +44,7 @@ const hobbies = [
   },
   {
     title: 'Media',
-    description: `In my free time I enjoy watching movies, tv shows, and anime. Please let me know if you have any recommendations for what I should watch next.`,
+    description: `In my free time I enjoy watching movies, tv shows, and anime. Always open to any recommendations if you have any!`,
     portrait: true,
     titleDown: true,
     images: [
@@ -57,7 +57,7 @@ const hobbies = [
   },
   {
     title: 'Reading',
-    description: `This is a new hobby which I've taken up. I really enjoy reading a mix of technical and self-improvement books when I can find the time.`,
+    description: `I enjoy reading a mix of technical and self-improvement books. If you have any good recommendations, I'd love to hear them.`,
     portrait: true,
     images: [
       `${API_URL}/api/images/thepragmatic.jpg`,
@@ -88,7 +88,7 @@ const Hobbies = () => {
   return (
     <Box sx={{ mt: 8, mb: 8, px: { xs: 1, md: 4 }, overflow: 'hidden' }}>
       <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 700, textAlign: 'center', mb: 4, color: '#fff' }}>
-        Interests
+        Hobbies
       </Typography>
       <Swiper
         modules={[Navigation, EffectCoverflow]}

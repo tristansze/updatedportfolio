@@ -86,10 +86,8 @@ const Hobbies = () => {
               sx={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
-                gap: 1,
+                gap: 1.25,
                 mb: 2,
-                maxWidth: 220,
-                width: '100%',
               }}
             >
               {hobby.images.map((img) => (
@@ -97,7 +95,7 @@ const Hobbies = () => {
                   <Box
                     sx={{
                       aspectRatio: '1 / 1',
-                      borderRadius: 1.5,
+                      borderRadius: 1.75,
                       overflow: 'hidden',
                       border: '1px solid rgba(185,251,192,0.12)',
                       transition: 'transform 0.25s, border-color 0.2s',

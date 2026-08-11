@@ -1,107 +1,163 @@
 import React from 'react';
-import { Container, Typography, Box, Grid, Avatar } from '@mui/material';
-import { motion } from 'framer-motion';
-
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5050';
+import { Box, Typography, Avatar, Link } from '@mui/material';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import SectionTitle from '../components/SectionTitle';
 
 const activities = [
   {
-    title: 'Computer Science Department Ambassador',
+    title: 'CS Department Ambassador',
     org: 'Purdue Computer Science',
-    image: `${API_URL}/api/images/purduecs.png`,
-    date: 'March 2025 - Present',
-    description: `As an ambassador for the department, I connect students with departamental resources including undergraduate research, professional development, academic support opportunities. I also speak at information sessions for prospective students and families, sharing my insights from my time as a student.`
-  },
-  {
-    title: 'Treasurer & Initiative Lead',
-    org: 'Undergraduate Student Board (USB)',
-    image: `${API_URL}/api/images/usb.png`,
-    date: 'March 2024 - Present',
-    description: `The Computer Science Undergraduate Student Board serves as a liaison between students and the department, organizing student forums, social events, and drop-in office hours. As Treasurer, I manage club spending and work with the CS department head to secure club funding.`,
+    image: '/images/purduecs.png',
+    date: '2025 — Present',
+    link: 'https://www.cs.purdue.edu/student-experience/meet-team.html',
+    description:
+      'Connect students with academic resources and research opportunities. Speak at information sessions for prospective students and families.',
   },
   {
     title: 'Executive Board',
     org: 'BoilerMake',
-    image: `${API_URL}/api/images/boilermake.png`,
-    date: 'March 2025 - Present',
-    description: 'As an organizer for BoilerMake, Purdue\'s premier annual hackathon, I work on the development team responsible for the design and maintenance of our mobile and web applications. These apps provide critical resources for students such as our application portal, event schedule, and company workshop information.',
+    image: '/images/boilermake.png',
+    date: '2025 — Present',
+    link: 'https://boilermake.org/',
+    description:
+      'Build and maintain our website and mobile app for Purdue\'s largest annual hackathon.',
+  },
+  {
+    title: 'Treasurer & Initiative Lead',
+    org: 'Undergraduate Student Board',
+    image: '/images/usb.png',
+    date: '2024 — Present',
+    link: 'https://www.purdueusb.com/',
+    description:
+      'Manage club funding and budget. Dedicated to improving the student experience through a variety of social and academic initiatives.',
   },
   {
     title: 'Undergraduate Teaching Assistant',
     org: 'Purdue University',
-    image: `${API_URL}/api/images/purduelogo.png`,
-    date: 'January 2024 - Present',
-    description: `I served as a teaching assistant for CS 180, CS 182, and CS 240 as well as ECON 370 and ECON 210. I proctored exams and quizzes, hosted office hours, and provided additional tutoring to help students understand key concepts and prepare for exams.`,
-  }
+    image: '/images/purduelogo.png',
+    date: '2024 — 2026',
+    description:
+      'TA for CS 180, 182, 240 and ECON 210, 370 — office hours, exam proctoring, ygrading.',
+  },
 ];
 
 const Extracurriculars = () => {
   return (
-    <Container maxWidth="md" sx={{ mt: 8, mb: 8, position: 'relative', borderRadius: 6, p: { xs: 2, md: 6 }, background: 'linear-gradient(135deg, #181024 0%, #2a1746 100%)', boxShadow: 6, overflow: 'hidden' }}>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 700, textAlign: 'center', mb: 4, color: '#fff', fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif' }}>
-          Leadership
-        </Typography>
-        <Grid container spacing={6} justifyContent="center">
-          {activities.map((act, idx) => (
-            <Grid item xs={12} key={idx}>
-              <Box sx={{ mb: 2 }}>
-                <Typography variant="h6" sx={{ fontWeight: 700, color: '#b9fbc0', mb: 0.5, letterSpacing: 1, fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif' }}>{act.title}</Typography>
-                <Typography variant="subtitle2" sx={{ color: '#b9fbc0', mb: 1, fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif' }}>{act.date}</Typography>
-              </Box>
-              <Box sx={{ 
-                display: 'flex', 
-                flexDirection: { xs: 'column', md: 'row' }, 
-                alignItems: { xs: 'center', md: 'center' }, 
-                gap: { xs: 3, md: 4 }, 
-                mb: 2 
-              }}>
-                <motion.div
-                  whileHover={{ scale: 1.04, boxShadow: '0 8px 32px 0 rgba(108, 63, 197, 0.10)' }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                  style={{
-                    background: 'rgba(40, 20, 60, 0.98)',
-                    borderRadius: 20,
-                    padding: '24px 20px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    marginBottom: 0,
-                    boxShadow: '0 2px 12px 0 rgba(108, 63, 197, 0.06)',
-                    border: '1.5px solid #4b2e83',
-                    width: '320px',
-                    minHeight: 160,
-                    flexShrink: 0,
-                  }}
-                >
-                  <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-                    <Avatar src={act.image} alt={act.org} sx={{ width: 56, height: 56, borderRadius: 3, background: '#fff', objectFit: 'contain', p: 1, mb: 1 }} variant="rounded" imgProps={{ style: { objectFit: 'contain', width: '100%', height: '100%' } }} />
-                    <Typography variant="h6" sx={{ fontWeight: 600, color: '#fff', textAlign: 'center', fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif' }}>{act.org}</Typography>
-                  </Box>
-                </motion.div>
-                <Box sx={{ 
-                  flex: 1, 
-                  minWidth: 0,
-                  width: { xs: '100%', md: 'auto' }
-                }}>
-                  <Typography variant="body1" sx={{ 
-                    color: '#fff', 
-                    fontSize: 17, 
-                    lineHeight: 1.7, 
-                    textAlign: { xs: 'center', md: 'left' }, 
-                    fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif',
-                    px: { xs: 1, md: 0 }
-                  }}>
-                    {act.description}
-                  </Typography>
-                </Box>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
+    <Box>
+      <SectionTitle subtitle="Campus involvements - what I'm involved in outside the classroom">
+        Leadership
+      </SectionTitle>
+      <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0 }}>
+        {activities.map((act) => {
+          const OrgTag = act.link ? Link : Typography;
+          const orgProps = act.link
+            ? {
+                href: act.link,
+                target: '_blank',
+                rel: 'noopener noreferrer',
+              }
+            : {};
+
+          return (
+          <Box
+            component="li"
+            key={`${act.org}-${act.title}`}
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '52px 1fr', md: '52px 1fr 140px' },
+              gap: { xs: 1.75, md: 2.5 },
+              alignItems: 'flex-start',
+              py: 2.5,
+              px: { xs: 0, sm: 1 },
+              borderTop: '1px solid rgba(255,255,255,0.06)',
+              borderRadius: 2,
+              transition: 'background 0.2s, border-color 0.2s',
+              '&:hover': {
+                background: 'rgba(185,251,192,0.03)',
+                borderTopColor: 'rgba(185,251,192,0.22)',
+                '& .lead-org': { color: '#b9fbc0' },
+              },
+              '&:last-child': {
+                borderBottom: '1px solid rgba(255,255,255,0.06)',
+              },
+            }}
+          >
+            <Avatar
+              src={act.image}
+              alt={act.org}
+              variant="rounded"
+              sx={{
+                width: 48,
+                height: 48,
+                bgcolor: '#fff',
+                p: 0.6,
+                mt: 0.15,
+                border: '1px solid rgba(255,255,255,0.1)',
+                '& img': { objectFit: 'contain' },
+              }}
+            />
+            <Box>
+              <OrgTag
+                {...orgProps}
+                className="lead-org"
+                sx={{
+                  color: '#f2f2f2',
+                  fontSize: '1.05rem',
+                  fontWeight: 700,
+                  fontFamily: '"Syne", sans-serif',
+                  letterSpacing: '-0.02em',
+                  transition: 'color 0.2s',
+                  mb: 0.25,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 0.75,
+                  textDecoration: 'none',
+                }}
+              >
+                {act.org}
+                {act.link && <OpenInNewIcon sx={{ fontSize: 15, opacity: 0.65 }} />}
+              </OrgTag>
+              <Typography sx={{ color: '#9a9a9a', fontSize: '0.9rem', mb: 0.85 }}>
+                {act.title}
+              </Typography>
+              <Typography
+                sx={{
+                  color: '#7d7d7d',
+                  fontSize: '0.92rem',
+                  lineHeight: 1.55,
+                  maxWidth: 560,
+                }}
+              >
+                {act.description}
+              </Typography>
+              <Typography
+                sx={{
+                  color: '#666',
+                  fontSize: '0.8rem',
+                  mt: 0.75,
+                  display: { xs: 'block', md: 'none' },
+                }}
+              >
+                {act.date}
+              </Typography>
+            </Box>
+            <Typography
+              sx={{
+                color: '#666',
+                fontSize: '0.85rem',
+                textAlign: 'right',
+                pt: 0.4,
+                display: { xs: 'none', md: 'block' },
+              }}
+            >
+              {act.date}
+            </Typography>
+          </Box>
+          );
+        })}
       </Box>
-    </Container>
+    </Box>
   );
 };
 
-export default Extracurriculars; 
+export default Extracurriculars;

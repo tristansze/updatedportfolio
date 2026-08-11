@@ -1,170 +1,144 @@
 import React, { useState } from 'react';
-import { 
-  AppBar, 
-  Toolbar, 
-  Typography, 
-  Button, 
+import {
   Box,
   IconButton,
   Drawer,
   List,
-  ListItem,
+  ListItemButton,
   ListItemText,
-  useTheme,
-  useMediaQuery
+  useMediaQuery,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const Navbar = ({ onNavigate, refs }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+  const isMobile = useMediaQuery('(max-width:768px)');
 
   const navItems = [
-    { name: 'About', ref: refs.aboutRef },
     { name: 'Experience', ref: refs.experienceRef },
     { name: 'Projects', ref: refs.projectsRef },
-    { name: 'Extracurriculars', ref: refs.extracurricularsRef },
+    { name: 'Leadership', ref: refs.extracurricularsRef },
     { name: 'Hobbies', ref: refs.hobbiesRef },
     { name: 'Contact', ref: refs.contactRef },
   ];
 
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography 
-        variant="h6" 
-        onClick={() => onNavigate(refs.homeRef)}
-        sx={{ 
-          my: 2, 
-          cursor: 'pointer',
-          transition: 'color 0.2s',
-          '&:hover': {
-            color: '#b9fbc0',
-          },
-        }}
-      >
-        Tristan Sze
-      </Typography>
-      <List>
-        {navItems.map((item) => (
-          <ListItem 
-            key={item.name} 
-            onClick={() => onNavigate(item.ref)}
-            sx={{ 
-              cursor: 'pointer',
-              '&:hover': {
-                backgroundColor: 'rgba(144, 202, 249, 0.08)',
-              },
-            }}
-          >
-            <ListItemText primary={item.name} />
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
+  const handleNav = (ref) => {
+    onNavigate(ref);
+    setMobileOpen(false);
+  };
 
   return (
     <>
-      <AppBar 
-          position="fixed"
-          sx={{ 
-            background: 'linear-gradient(135deg, #181024cc 0%, #2a1746cc 100%)',
-            backdropFilter: 'blur(12px)',
-            boxShadow: '0 4px 30px rgba(0, 0, 0, 0.18)',
-            fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif',
-            zIndex: 1301,
+      <Box
+        component="nav"
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1100,
+          height: 64,
+          display: 'flex',
+          alignItems: 'center',
+          backgroundColor: 'rgba(0,0,0,0.92)',
+          backdropFilter: 'blur(12px)',
+          borderBottom: '1px solid rgba(255,255,255,0.06)',
+        }}
+      >
+        <Box
+          sx={{
+            width: '100%',
+            maxWidth: 1100,
+            mx: 'auto',
+            px: { xs: 3, sm: 4 },
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
           }}
         >
-          <Toolbar>
-            <Typography 
-              variant="h6" 
-              component="div" 
-              onClick={() => onNavigate(refs.homeRef)}
-              sx={{ 
-                flexGrow: 1,
-                fontWeight: 700,
-                color: '#fff',
-                fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif',
-                cursor: 'pointer',
-                transition: 'color 0.2s',
-                '&:hover': {
-                  color: '#b9fbc0',
-                },
-              }}
+          <Box
+            component="button"
+            type="button"
+            onClick={() => onNavigate(refs.homeRef)}
+            sx={{
+              all: 'unset',
+              cursor: 'pointer',
+              fontFamily: '"Syne", sans-serif',
+              fontSize: '1.1rem',
+              fontWeight: 700,
+              color: '#f2f2f2',
+              letterSpacing: '-0.02em',
+              '&:hover': { color: '#b9fbc0' },
+            }}
+          >
+            Tristan Sze
+          </Box>
+
+          {isMobile ? (
+            <IconButton
+              onClick={() => setMobileOpen(true)}
+              aria-label="Open menu"
+              sx={{ color: '#e8e8e8', p: 1 }}
             >
-              Tristan Sze
-            </Typography>
-            {isMobile ? (
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="end"
-                onClick={handleDrawerToggle}
-                sx={{ fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif' }}
-              >
-                <MenuIcon />
-              </IconButton>
-            ) : (
-              <Box sx={{ display: 'flex', gap: 2 }}>
-                {navItems.map((item) => (
-                  <Button
-                    key={item.name}
-                    color="inherit"
-                    onClick={() => onNavigate(item.ref)}
-                    sx={{
-                      position: 'relative',
-                      fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif',
-                      '&::after': {
-                        content: '""',
-                        position: 'absolute',
-                        width: '0%',
-                        height: '2px',
-                        bottom: 0,
-                        left: '50%',
-                        backgroundColor: '#b9fbc0',
-                        transition: 'all 0.3s ease-in-out',
-                        transform: 'translateX(-50%)',
-                      },
-                      '&:hover::after': {
-                        width: '100%',
-                      },
-                    }}
-                  >
-                    {item.name}
-                  </Button>
-                ))}
-              </Box>
-            )}
-          </Toolbar>
-        </AppBar>
+              <MenuIcon />
+            </IconButton>
+          ) : (
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 3.5 }}>
+              {navItems.map((item) => (
+                <Box
+                  key={item.name}
+                  component="button"
+                  type="button"
+                  onClick={() => onNavigate(item.ref)}
+                  sx={{
+                    all: 'unset',
+                    cursor: 'pointer',
+                    color: '#8a8a8a',
+                    fontSize: '0.9rem',
+                    fontFamily: '"Outfit", sans-serif',
+                    fontWeight: 500,
+                    transition: 'color 0.15s',
+                    '&:hover': { color: '#b9fbc0' },
+                  }}
+                >
+                  {item.name}
+                </Box>
+              ))}
+            </Box>
+          )}
+        </Box>
+      </Box>
+
       <Drawer
-        variant="temporary"
         anchor="right"
         open={mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
-        }}
-        sx={{
-          display: { xs: 'block', sm: 'none' },
-          '& .MuiDrawer-paper': { 
-            boxSizing: 'border-box', 
-            width: 240,
-            backgroundColor: 'background.paper',
-            fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif',
+        onClose={() => setMobileOpen(false)}
+        PaperProps={{
+          sx: {
+            width: 260,
+            backgroundColor: '#000',
+            borderLeft: '1px solid rgba(255,255,255,0.08)',
+            pt: 2,
           },
         }}
       >
-        {drawer}
+        <List>
+          {navItems.map((item) => (
+            <ListItemButton key={item.name} onClick={() => handleNav(item.ref)}>
+              <ListItemText
+                primary={item.name}
+                primaryTypographyProps={{
+                  fontFamily: '"Outfit", sans-serif',
+                  color: '#e8e8e8',
+                  fontSize: '1rem',
+                }}
+              />
+            </ListItemButton>
+          ))}
+        </List>
       </Drawer>
     </>
   );
 };
 
-export default Navbar; 
+export default Navbar;

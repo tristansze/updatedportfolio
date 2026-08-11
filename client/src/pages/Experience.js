@@ -1,112 +1,182 @@
 import React from 'react';
-import { Container, Typography, Box, Grid, Avatar } from '@mui/material';
-import { motion } from 'framer-motion';
-
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5050';
+import { Box, Typography, Avatar } from '@mui/material';
+import SectionTitle from '../components/SectionTitle';
 
 const experiences = [
   {
-    title: 'Software Engineering Intern',
-    company: 'Crown Equipment',
-    image: `${API_URL}/api/images/crown.png`,
-    date: 'August 2025 - Present',
-    description: 'At Crown, I work as a fullstack developer on our sales team, helping to maintain and improve customer facing applications on our sales platform. I primarily use Spring Boot, Typescript, and Angular to address bugs, design new features, and update existing systems.'
+    title: 'Software Engineer Intern',
+    company: 'Lucid Motors',
+    image: '/images/LucidMotors_Logo.jpg',
+    date: 'May 2026 — Aug 2026',
+    description:
+      'Worked on cloud-native microservices enabling smart (V1G) charging for customers.',
+    tech: ['Go', 'MongoDB', 'gRPC'],
   },
   {
-    title: 'Software Engineering Intern',
+    title: 'Software Engineer Intern',
+    company: 'Crown Equipment',
+    image: '/images/crown.png',
+    date: 'Aug 2025 — May 2026',
+    description: 'Full-stack development for company\'s sales platform.',
+    tech: ['Java', 'Spring Boot', 'TypeScript', 'Angular', 'PostgreSQL'],
+  },
+  {
+    title: 'Software Engineer Intern',
     company: 'Battelle',
-    image: `${API_URL}/api/images/battelle.png`,
-    date: 'May 2025 - August 2025',
-    description: `At Battelle, I developed a Laboratory Information Management System (LIMS) that improved efficiency across several national defense labs. My work revolved around building microservices using C# and ASP.NET and designing a scalable pipeline for automating file processing and storage with Amazon S3.`
+    image: '/images/battelle.png',
+    date: 'May 2025 — Aug 2025',
+    description:
+      'Built microservices for a LIMS used across company\'s national defense labs',
+    tech: ['C#', 'ASP.NET', 'SQL Server'],
   },
   {
     title: 'Undergraduate Research Assistant',
-    company: "FACAI Lab @ Purdue",
-    image: `${API_URL}/api/images/facai.png`,
-    date: 'January 2024 - August 2024',
-    description: `As a research assistant in Purdue's FACAI lab, I utilized Python and R to analyze global forestry data. I contributed to the development of a KNN model used to impute data in remote areas and a linear regression model used to estimate forest biomass, supporting research on forest health worldwide.`
+    company: 'FACAI Lab @ Purdue',
+    image: '/images/facai.png',
+    date: 'Jan 2024 — Aug 2024',
+    description:
+      'Focus on improving understanding of global forestry data',
+    tech: ['Python', 'R'],
   },
   {
     title: 'Computer Vision Engineer',
     company: 'HUMN Capital',
-    image: `${API_URL}/api/images/humncapital.png`,
-    date: 'January 2024 - May 2024',
-    description: `At HUMN Capital, I deployed a sentiment analysis model with the goal of improving manager efficiency in their 1-1 meetings with employees. Using Tensorflow, OpenCV, and Keras we extracted various emotions that contributed to a score used to evaluate manager effectiveness.`,
-  }
+    image: '/images/humncapital.png',
+    date: 'Jan 2024 — May 2024',
+    description:
+      'Deployed a sentiment model to score manager effectiveness in 1-1 meetings.',
+    tech: ['Python', 'TensorFlow', 'OpenCV', "React"],
+  },
 ];
 
 const Experience = () => {
   return (
-    <Container maxWidth="md" sx={{ mt: 8, mb: 8, borderRadius: 6, p: { xs: 2, md: 6 }, background: 'linear-gradient(135deg, #181024 0%, #2a1746 100%)', boxShadow: 6, overflow: 'hidden' }}>
-      <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 700, textAlign: 'center', mb: 4, color: '#fff' }}>
+    <Box>
+      <SectionTitle subtitle="Internships and research - what I've worked on">
         Experience
-      </Typography>
-      <Box sx={{ mt: 3, position: 'relative', zIndex: 1 }}>
-        <Grid container spacing={6} justifyContent="center">
-          {experiences.map((exp, idx) => (
-            <Grid item xs={12} key={idx}>
-              <Box sx={{ mb: 2 }}>
-                <Typography variant="h6" sx={{ fontWeight: 700, color: '#b9fbc0', mb: 0.5, letterSpacing: 1, fontFamily: 'Roboto, Helvetica, Arial, sans-serif' }}>{exp.title}</Typography>
-                <Typography variant="subtitle2" sx={{ color: '#b9fbc0', mb: 1, fontFamily: 'Roboto, Helvetica, Arial, sans-serif' }}>{exp.date}</Typography>
-              </Box>
-              <Box sx={{ 
-                display: 'flex', 
-                flexDirection: { xs: 'column', md: 'row' }, 
-                alignItems: { xs: 'center', md: 'center' }, 
-                gap: { xs: 3, md: 4 }, 
-                mb: 2 
-              }}>
-                <motion.div
-                  whileHover={{ scale: 1.04, boxShadow: '0 8px 32px 0 rgba(108, 63, 197, 0.10)' }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                  style={{
-                    background: 'rgba(40, 20, 60, 0.98)',
-                    borderRadius: 20,
-                    padding: '24px 20px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    marginBottom: 0,
-                    boxShadow: '0 2px 12px 0 rgba(108, 63, 197, 0.06)',
-                    border: '1.5px solid #4b2e83',
-                    width: '320px',
-                    minHeight: 160,
-                    flexShrink: 0,
-                  }}
-                >
-                  <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-                    <Avatar src={exp.image} alt={exp.company} sx={{ width: 56, height: 56, borderRadius: 3, background: '#fff', objectFit: 'contain', p: 1, mb: 1 }} variant="rounded" imgProps={{ style: { objectFit: 'contain', width: '100%', height: '100%' } }} />
-                    <Typography variant="h6" sx={{ fontWeight: 600, color: '#fff', textAlign: 'center', fontFamily: 'Roboto, Helvetica, Arial, sans-serif' }}>{exp.company}</Typography>
+      </SectionTitle>
+      <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0 }}>
+        {experiences.map((exp) => (
+          <Box
+            component="li"
+            key={`${exp.company}-${exp.date}`}
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '52px 1fr', md: '52px 1fr 170px' },
+              gap: { xs: 1.75, md: 2.5 },
+              alignItems: 'flex-start',
+              py: 2.5,
+              px: { xs: 0, sm: 1 },
+              borderTop: '1px solid rgba(255,255,255,0.06)',
+              transition: 'background 0.2s, border-color 0.2s',
+              borderRadius: 2,
+              '&:hover': {
+                background: 'rgba(185,251,192,0.03)',
+                borderTopColor: 'rgba(185,251,192,0.22)',
+                '& .exp-company': { color: '#b9fbc0' },
+              },
+              '&:last-child': {
+                borderBottom: '1px solid rgba(255,255,255,0.06)',
+              },
+            }}
+          >
+            <Avatar
+              src={exp.image}
+              alt={exp.company}
+              variant="rounded"
+              sx={{
+                width: 48,
+                height: 48,
+                bgcolor: '#fff',
+                p: 0.6,
+                mt: 0.15,
+                border: '1px solid rgba(255,255,255,0.1)',
+                '& img': { objectFit: 'contain' },
+              }}
+            />
+            <Box>
+              <Typography
+                className="exp-company"
+                sx={{
+                  color: '#f2f2f2',
+                  fontSize: '1.05rem',
+                  fontWeight: 700,
+                  fontFamily: '"Syne", sans-serif',
+                  letterSpacing: '-0.02em',
+                  transition: 'color 0.2s',
+                  mb: 0.25,
+                }}
+              >
+                {exp.company}
+              </Typography>
+              <Typography sx={{ color: '#9a9a9a', fontSize: '0.9rem', mb: 0.85 }}>
+                {exp.title}
+              </Typography>
+              <Typography
+                sx={{
+                  color: '#7d7d7d',
+                  fontSize: '0.92rem',
+                  lineHeight: 1.55,
+                  maxWidth: 560,
+                  mb: 1.25,
+                }}
+              >
+                {exp.description}
+              </Typography>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: 0.75,
+                }}
+              >
+                {exp.tech.map((t) => (
+                  <Box
+                    key={t}
+                    component="span"
+                    sx={{
+                      px: 1,
+                      py: 0.35,
+                      fontSize: '0.75rem',
+                      color: '#b9fbc0',
+                      border: '1px solid rgba(185,251,192,0.28)',
+                      borderRadius: 1,
+                      background: 'rgba(185,251,192,0.06)',
+                      letterSpacing: '0.02em',
+                    }}
+                  >
+                    {t}
                   </Box>
-                </motion.div>
-                <Box sx={{ 
-                  flex: 1, 
-                  minWidth: 0, 
-                  minHeight: { xs: 'auto', md: 160 }, 
-                  display: 'flex', 
-                  alignItems: 'center',
-                  width: { xs: '100%', md: 'auto' }
-                }}>
-                  <Typography variant="body1" sx={{ 
-                    color: '#fff', 
-                    fontSize: 16, 
-                    lineHeight: 1.5, 
-                    textAlign: { xs: 'center', md: 'left' }, 
-                    fontFamily: 'Roboto, Helvetica, Arial, sans-serif', 
-                    letterSpacing: 0.5, 
-                    px: { xs: 1, md: 2 }, 
-                    py: 1 
-                  }}>
-                    {exp.description}
-                  </Typography>
-                </Box>
+                ))}
               </Box>
-            </Grid>
-          ))}
-        </Grid>
+              <Typography
+                sx={{
+                  color: '#666',
+                  fontSize: '0.8rem',
+                  mt: 0.75,
+                  display: { xs: 'block', md: 'none' },
+                }}
+              >
+                {exp.date}
+              </Typography>
+            </Box>
+            <Typography
+              sx={{
+                color: '#666',
+                fontSize: '0.85rem',
+                textAlign: 'right',
+                pt: 0.4,
+                display: { xs: 'none', md: 'block' },
+                fontVariantNumeric: 'tabular-nums',
+              }}
+            >
+              {exp.date}
+            </Typography>
+          </Box>
+        ))}
       </Box>
-    </Container>
+    </Box>
   );
 };
 
-export default Experience; 
+export default Experience;

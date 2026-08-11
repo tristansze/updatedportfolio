@@ -24,7 +24,7 @@ async function seedImages() {
         });
         console.log('Connected to MongoDB');
 
-        const imagesDir = path.join(__dirname, '../../../../updatedportfolio/client/public/images');
+        const imagesDir = path.join(__dirname, '../../../client/public/images');
 
         if (!fs.existsSync(imagesDir)) {
             console.error(`Images directory not found: ${imagesDir}`);

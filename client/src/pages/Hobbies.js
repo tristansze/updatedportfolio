@@ -1,201 +1,155 @@
-import React, { useRef, useEffect } from 'react';
-import { Typography, Box, Avatar, Tooltip } from '@mui/material';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, EffectCoverflow } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/effect-coverflow';
-
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5050';
+import React from 'react';
+import { Typography, Box, Tooltip } from '@mui/material';
+import SectionTitle from '../components/SectionTitle';
 
 const hobbies = [
   {
     title: 'Fitness',
-    description: `I love staying active! I do everything from lifting, rock climbing, and running. I really enjoy anything that involves the outdoors.`,
+    description:
+      'Lifting, rock climbing, running, and anything outdoors.',
     images: [
-      `${API_URL}/api/images/olentangyGame.jpg`,
-      `${API_URL}/api/images/hockingclimbing.png`,
-      `${API_URL}/api/images/rafting.JPG`,
-      `${API_URL}/api/images/haileakala2.png`,
+      { src: '/images/olentangyGame.jpg', tip: 'Soccer' },
+      { src: '/images/hockingclimbing.png', tip: 'Hocking Hills State Park' },
+      { src: '/images/rafting.JPG', tip: 'New River Gorge National Park' },
+      { src: '/images/haileakala2.png', tip: 'Haileakala National Park' },
     ],
-    tooltips: ['Soccer', 'Hocking Hills State Park', 'New River Gorge National Park', 'Haileakala National Park'],
   },
   {
     title: 'Music',
-    description: `I like everything from R&B, to rock, to house and I'm constantly finding new artists and songs. Here are some of my favorite albums.`,
+    description:
+      'R&B, rock, house — always digging for new artists.',
     images: [
-      `${API_URL}/api/images/currents.jpeg`,
-      `${API_URL}/api/images/rainbowcover.png`,
-      `${API_URL}/api/images/rumors.jpg`,
-      `${API_URL}/api/images/cinema.jpg`,
+      { src: '/images/currents.jpeg', tip: 'Currents - Tame Impala' },
+      { src: '/images/rainbowcover.png', tip: 'In Rainbows - Radiohead' },
+      { src: '/images/fred.jpg', tip: 'Actual Life 2 - Fred Again..' },
+      { src: '/images/magdalena.jpg', tip: 'Imaginal Disk - Magdalena Bay' },
     ],
-    tooltips: ['Currents - Tame Impala', 'In Rainbows - Radiohead', 'Rumours - Fleetwood Mac', 'Cinema - The Marias'],
   },
   {
     title: 'Travel',
-    description: `I love visiting new places, learning about different cultures, and enjoying delicious food. I recently visited Japan and Vietnam and before that Hawaii.`,
+    description:
+      'New places, good food, and a bit of adventure. Recently Japan, Vietnam, and Hawaii.',
     images: [
-      `${API_URL}/api/images/ninhbinh.jpg`,
-      `${API_URL}/api/images/selfiehiroshima.JPG`,
-      `${API_URL}/api/images/lanikai.png`,
-      `${API_URL}/api/images/skydiving.JPG`,
+      { src: '/images/ninhbinh.jpg', tip: 'Ninh Binh, Vietnam' },
+      { src: '/images/selfiehiroshima.JPG', tip: 'Hiroshima, Japan' },
+      { src: '/images/lanikai.png', tip: 'Lanikai, Hawaii' },
+      { src: '/images/skydiving.JPG', tip: 'North Shore, Hawaii' },
     ],
-    tooltips: ['Ninh Binh, Vietnam', 'Hiroshima, Japan', 'Lanikai, Hawaii', 'North Shore, Hawaii'],
   },
   {
     title: 'Media',
-    description: `In my free time I enjoy watching movies, tv shows, and anime. Always open to any recommendations if you have any!`,
-    portrait: true,
-    titleDown: true,
+    description:
+      'Movies, TV, Anime, & Broadway. Always open to recommendations.',
     images: [
-      `${API_URL}/api/images/andor.jpeg`,
-      `${API_URL}/api/images/perfectdays.jpeg`,
-      `${API_URL}/api/images/thewindrises.jpeg`,
-      `${API_URL}/api/images/fmab.webp`,
+      { src: '/images/andor.jpeg', tip: 'Andor' },
+      { src: '/images/perfectdays.jpeg', tip: 'Perfect Days' },
+      { src: '/images/geass.jpg', tip: 'Code Geass' },
+      { src: '/images/hadestown.jpeg', tip: 'Hadestown' },
     ],
-    tooltips: ['Andor', 'Perfect Days', 'The Wind Rises', 'Fullmetal Alchemist: Brotherhood'],
-  },
-  {
-    title: 'Reading',
-    description: `I enjoy reading a mix of technical and self-improvement books. If you have any good recommendations, I'd love to hear them.`,
-    portrait: true,
-    images: [
-      `${API_URL}/api/images/thepragmatic.jpg`,
-      `${API_URL}/api/images/tuesdays.jpg`,
-      `${API_URL}/api/images/dataintensive.jpg`,
-      `${API_URL}/api/images/breath.jpeg`,
-    ],
-    tooltips: ['The Pragmatic Programmer', 'Tuesdays with Morrie', 'Designing Data-Intensive Applications', 'When Breath Becomes Air'],
   },
 ];
 
 const Hobbies = () => {
-  const swiperRef = useRef(null);
-  const userInteracted = useRef(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (swiperRef.current && !userInteracted.current) {
-        const swiper = swiperRef.current.swiper;
-        if (swiper && swiper.slideNext) {
-          swiper.slideNext();
-        }
-      }
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <Box sx={{ mt: 8, mb: 8, px: { xs: 1, md: 4 }, overflow: 'hidden' }}>
-      <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 700, textAlign: 'center', mb: 4, color: '#fff' }}>
-        Hobbies
-      </Typography>
-      <Swiper
-        modules={[Navigation, EffectCoverflow]}
-        navigation
-        effect="coverflow"
-        centeredSlides
-        initialSlide={2}
-        slidesPerView={3}
-        loop={false}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 120,
-          modifier: 1.5,
-          slideShadows: false,
+    <Box>
+      <SectionTitle subtitle="What I do when I'm not writing code.">
+        More About Me
+      </SectionTitle>
+
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+          gap: { xs: 3, sm: 3.5 },
+          alignItems: 'stretch',
         }}
-        style={{ paddingBottom: 40, paddingTop: 10 }}
-        breakpoints={{
-          0: { slidesPerView: 1 },
-          900: { slidesPerView: 3 },
-        }}
-        ref={swiperRef}
-        onSlideChange={() => { userInteracted.current = true; }}
-        onTouchStart={() => { userInteracted.current = true; }}
-        onClick={() => { userInteracted.current = true; }}
       >
-        {hobbies.map((hobby, index) => (
-          <SwiperSlide key={index}>
+        {hobbies.map((hobby) => (
+          <Box
+            key={hobby.title}
+            sx={{
+              borderRadius: 2.5,
+              border: '1px solid rgba(255,255,255,0.08)',
+              background: 'rgba(14,14,14,0.9)',
+              p: { xs: 2, sm: 2.25 },
+              display: 'flex',
+              flexDirection: 'column',
+              height: '100%',
+              transition: 'border-color 0.2s',
+              '&:hover': {
+                borderColor: 'rgba(185,251,192,0.32)',
+                '& .hobby-title': { color: '#b9fbc0' },
+              },
+            }}
+          >
             <Box
               sx={{
-                borderRadius: 4,
-                background: 'rgba(40, 20, 60, 0.98)',
-                border: '1.5px solid #4b2e83',
-                overflow: 'hidden',
-                display: 'flex',
-                flexDirection: 'column',
-                height: { xs: 'auto', md: 620 },
-                maxWidth: 680,
-                mx: 'auto',
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: 1.25,
+                mb: 2,
               }}
             >
-              {/* Image area */}
-              <Box
-                sx={{
-                  width: '100%',
-                  background: 'rgba(40, 20, 60, 0.98)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  p: 3,
-                  flex: 1,
-                }}
-              >
-                <Box sx={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(2, 1fr)',
-                  gap: 2,
-                  justifyItems: 'center',
-                  width: 'fit-content',
-                  mx: 'auto',
-                }}>
-                  {hobby.images.map((img, i) => {
-                    const imgW = hobby.portrait ? { xs: 120, md: 160 } : { xs: 140, md: 180 };
-                    const imgH = hobby.portrait ? { xs: 160, md: 210 } : { xs: 140, md: 180 };
-
-                    const avatar = (
-                      <Avatar
-                        key={i}
-                        src={img}
-                        variant="rounded"
-                        sx={{
-                          width: imgW,
-                          height: imgH,
-                          transition: 'transform 0.3s',
-                          '&:hover': { transform: 'scale(1.06)' },
-                          border: '2px solid #6c3fc5',
-                          boxShadow: '0 4px 16px rgba(108, 63, 197, 0.25)',
-                          '& img': { objectFit: 'cover' },
-                        }}
-                        imgProps={{ loading: 'lazy', decoding: 'async', style: { objectFit: 'cover' } }}
-                      />
-                    );
-
-                    return hobby.tooltips ? (
-                      <Tooltip key={i} title={hobby.tooltips[i]} arrow>
-                        {avatar}
-                      </Tooltip>
-                    ) : (
-                      avatar
-                    );
-                  })}
-                </Box>
-              </Box>
-
-              {/* Title & Description */}
-              <Box sx={{ p: 3, pt: 0, mt: -3, maxWidth: 340, mx: 'auto' }}>
-                <Typography variant="h5" sx={{ fontWeight: 700, textAlign: 'center', color: '#fff', mb: 0.5, letterSpacing: 0.5 }}>
-                  {hobby.title}
-                </Typography>
-                <Typography variant="body1" sx={{ textAlign: 'center', color: 'rgba(255,255,255,0.85)', fontSize: 15, lineHeight: 1.5 }}>
-                  {hobby.description}
-                </Typography>
-              </Box>
+              {hobby.images.map((img) => (
+                <Tooltip key={img.src} title={img.tip} arrow>
+                  <Box
+                    sx={{
+                      aspectRatio: '1 / 1',
+                      borderRadius: 1.75,
+                      overflow: 'hidden',
+                      border: '1px solid rgba(185,251,192,0.12)',
+                      transition: 'transform 0.25s, border-color 0.2s',
+                      cursor: 'default',
+                      '&:hover': {
+                        transform: 'scale(1.03)',
+                        borderColor: 'rgba(185,251,192,0.4)',
+                      },
+                    }}
+                  >
+                    <Box
+                      component="img"
+                      src={img.src}
+                      alt={img.tip}
+                      loading="lazy"
+                      sx={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        objectPosition: img.objectPosition || 'center',
+                        display: 'block',
+                      }}
+                    />
+                  </Box>
+                </Tooltip>
+              ))}
             </Box>
-          </SwiperSlide>
+
+            <Typography
+              className="hobby-title"
+              sx={{
+                fontFamily: '"Syne", sans-serif',
+                fontWeight: 700,
+                fontSize: '1.15rem',
+                color: '#f2f2f2',
+                letterSpacing: '-0.02em',
+                mb: 0.5,
+                transition: 'color 0.2s',
+              }}
+            >
+              {hobby.title}
+            </Typography>
+            <Typography
+              sx={{
+                color: '#888',
+                fontSize: '0.9rem',
+                lineHeight: 1.55,
+              }}
+            >
+              {hobby.description}
+            </Typography>
+          </Box>
         ))}
-      </Swiper>
+      </Box>
     </Box>
   );
 };

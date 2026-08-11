@@ -1,80 +1,37 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Box, GlobalStyles } from '@mui/material';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import About from './pages/About';
+import Experience from './pages/Experience';
 import Projects from './pages/Projects';
-import Contact from './pages/Contact';
 import Extracurriculars from './pages/Extracurriculars';
 import Hobbies from './pages/Hobbies';
-import Experience from './pages/Experience';
-// Router imports removed - using scroll navigation instead
+import Contact from './pages/Contact';
 
-// Enhanced theme with more modern styling
 const theme = createTheme({
   palette: {
     mode: 'dark',
-    primary: {
-      main: '#6c3fc5',
-      light: '#b9fbc0',
-      dark: '#2a1746',
-    },
-    secondary: {
-      main: '#b9fbc0',
-      light: '#e0c3fc',
-      dark: '#3a225d',
-    },
-    background: {
-      default: 'linear-gradient(135deg, #181024 0%, #2a1746 100%)',
-      paper: 'rgba(40, 20, 60, 0.98)',
-    },
+    primary: { main: '#b9fbc0' },
+    background: { default: '#050505', paper: '#0c0c0c' },
+    text: { primary: '#f2f2f2', secondary: '#8a8a8a' },
   },
   typography: {
-    fontFamily: 'Inter, IBM Plex Sans, Montserrat, Roboto, Arial, sans-serif',
-    fontSize: 15,
-    h1: {
-      fontWeight: 700,
-      fontSize: '2.5rem',
-    },
-    h2: {
-      fontWeight: 600,
-      fontSize: '2rem',
-    },
-    h3: {
-      fontWeight: 600,
-      fontSize: '1.5rem',
-    },
-    body1: {
-      fontSize: '1rem',
-      fontWeight: 400,
-      letterSpacing: 0.1,
-    },
-    body2: {
-      fontSize: '0.95rem',
-      fontWeight: 400,
-      letterSpacing: 0.1,
-    },
+    fontFamily: '"Outfit", "Helvetica Neue", sans-serif',
+    h1: { fontFamily: '"Syne", sans-serif', fontWeight: 700 },
+    h2: { fontFamily: '"Syne", sans-serif', fontWeight: 700 },
+    button: { textTransform: 'none', fontWeight: 500 },
   },
   components: {
     MuiButton: {
       styleOverrides: {
-        root: {
-          borderRadius: 8,
-          textTransform: 'none',
-          fontWeight: 600,
-        },
+        root: { borderRadius: 10, textTransform: 'none' },
       },
     },
-    MuiPaper: {
+    MuiCssBaseline: {
       styleOverrides: {
-        root: {
-          background: 'rgba(24, 16, 36, 0.98)',
-          borderRadius: 18,
-          border: '1.5px solid #2a1746',
-          boxShadow: '0 2px 24px 0 rgba(108, 63, 197, 0.10)',
-        },
+        body: { backgroundColor: '#050505', color: '#f2f2f2' },
       },
     },
   },
@@ -82,17 +39,43 @@ const theme = createTheme({
 
 function App() {
   const homeRef = useRef(null);
-  const aboutRef = useRef(null);
   const experienceRef = useRef(null);
   const projectsRef = useRef(null);
   const extracurricularsRef = useRef(null);
-  const contactRef = useRef(null);
   const hobbiesRef = useRef(null);
+  const contactRef = useRef(null);
+  const [scrollY, setScrollY] = useState(0);
+  const [maxScroll, setMaxScroll] = useState(1);
+
+  useEffect(() => {
+    let ticking = false;
+    const update = () => {
+      setScrollY(window.scrollY);
+      setMaxScroll(Math.max(document.documentElement.scrollHeight - window.innerHeight, 1));
+    };
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+
+  const progress = Math.min(scrollY / maxScroll, 1);
 
   const scrollToSection = (ref) => {
     const element = ref.current;
     if (!element) return;
-    const navbarHeight = 80;
+    const navbarHeight = 72;
     const elementPosition = element.getBoundingClientRect().top + window.scrollY;
     window.scrollTo({ top: elementPosition - navbarHeight, behavior: 'smooth' });
   };
@@ -100,182 +83,196 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <GlobalStyles styles={{
-        body: {
-          fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
-          fontSize: '15px',
-          background: 'linear-gradient(135deg, #181024 0%, #2a1746 100%)',
-          color: '#f5f5f5',
-        },
-        '.MuiContainer-root': {
-          background: 'rgba(24, 16, 36, 0.98)',
-          borderRadius: '18px',
-          border: '1.5px solid #2a1746',
-          boxShadow: '0 2px 24px 0 rgba(108, 63, 197, 0.10)',
-        },
-        '.MuiTypography-body1, .MuiTypography-body2': {
-          fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
-          fontSize: '0.98rem',
-          fontWeight: 400,
-          letterSpacing: '0.1px',
-        },
-        'img, .MuiAvatar-root, .MuiAvatar-img, .MuiTypography-h1, .MuiTypography-h2, .MuiTypography-h3, .MuiTypography-h4, .MuiTypography-h5, .MuiTypography-h6': {
+      <GlobalStyles
+        styles={{
+          body: {
+            backgroundColor: '#050505',
+            color: '#f2f2f2',
+            margin: 0,
+          },
+          a: { color: 'inherit', textDecoration: 'none' },
+          '@keyframes float': {
+            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+            '50%': { transform: 'translateY(-18px) rotate(160deg)' },
+          },
+          '@keyframes pulse': {
+            '0%, 100%': { transform: 'scale(1)', opacity: 0.55 },
+            '50%': { transform: 'scale(1.12)', opacity: 0.25 },
+          },
+          '@keyframes rotate': {
+            '0%': { transform: 'rotate(0deg)' },
+            '100%': { transform: 'rotate(360deg)' },
+          },
+          '@keyframes drift': {
+            '0%, 100%': { transform: 'translate(0, 0)' },
+            '50%': { transform: 'translate(12px, -10px)' },
+          },
+        }}
+      />
+      <Box
+        sx={{
+          minHeight: '100vh',
+          background:
+            'radial-gradient(ellipse 80% 50% at 10% -10%, rgba(185,251,192,0.07), transparent 55%), radial-gradient(ellipse 60% 40% at 90% 20%, rgba(185,251,192,0.04), transparent 50%), #050505',
+          color: '#f2f2f2',
           position: 'relative',
-          zIndex: 2,
-        },
-        // Custom Swiper navigation arrow styling
-        '.swiper-button-next, .swiper-button-prev': {
-          color: '#b9fbc0 !important',
-          width: '48px !important',
-          height: '48px !important',
-          '&:after': {
-            fontSize: '18px !important',
-            fontWeight: 'bold !important',
-          },
-          '&:hover': {
-            color: '#6c3fc5 !important',
-          },
-        },
-        '.swiper-button-next:after, .swiper-button-prev:after': {
-          background: 'rgba(24, 16, 36, 0.85) !important',
-          borderRadius: '12px !important',
-          width: '48px !important',
-          height: '48px !important',
-          display: 'flex !important',
-          alignItems: 'center !important',
-          justifyContent: 'center !important',
-          border: '1.5px solid #b9fbc0 !important',
-          boxShadow: '0 4px 12px rgba(108, 63, 197, 0.3) !important',
-        },
-      }} />
-      <Box sx={{ 
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #181024 0%, #2a1746 100%)',
-        pt: { xs: 7, sm: 8 },
-        position: 'relative',
-        '&::before': {
-          content: '""',
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: 'repeating-linear-gradient(0deg, transparent 0px, transparent 39px, rgba(58, 34, 93, 0.1) 40px, rgba(58, 34, 93, 0.1) 41px), repeating-linear-gradient(90deg, transparent 0px, transparent 39px, rgba(58, 34, 93, 0.1) 40px, rgba(58, 34, 93, 0.1) 41px)',
-          zIndex: 0,
-          pointerEvents: 'none',
-        },
-        '&::after': {
-          content: '""',
-          position: 'fixed',
-          top: '10%',
-          right: '5%',
-          width: '200px',
-          height: '200px',
-          background: 'radial-gradient(circle, rgba(108, 63, 197, 0.1) 0%, transparent 70%)',
-          borderRadius: '50%',
-          zIndex: 0,
-          pointerEvents: 'none',
-          animation: 'float 6s ease-in-out infinite',
-        },
-        '@keyframes float': {
-          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-          '50%': { transform: 'translateY(-20px) rotate(180deg)' },
-        },
-      }}>
-        <Navbar 
-          onNavigate={scrollToSection}
-          refs={{ homeRef, aboutRef, experienceRef, projectsRef, extracurricularsRef, hobbiesRef, contactRef }}
-        />
-        <Box sx={{ 
-          maxWidth: '100%',
           overflowX: 'hidden',
-          position: 'relative',
-        }}>
-          {/* Left side decorative elements */}
-          <Box sx={{
+          '&::before': {
+            content: '""',
             position: 'fixed',
-            left: '2%',
-            top: '20%',
-            width: '100px',
-            height: '100px',
-            background: 'linear-gradient(45deg, rgba(185, 251, 192, 0.1), rgba(108, 63, 197, 0.1))',
-            borderRadius: '50%',
+            inset: 0,
+            background:
+              'repeating-linear-gradient(0deg, transparent 0px, transparent 47px, rgba(185,251,192,0.035) 48px), repeating-linear-gradient(90deg, transparent 0px, transparent 47px, rgba(185,251,192,0.035) 48px)',
             zIndex: 0,
             pointerEvents: 'none',
-            animation: 'pulse 4s ease-in-out infinite',
-          }} />
-          
-          <Box sx={{
+            opacity: 0.85 - progress * 0.35,
+            maskImage: 'linear-gradient(180deg, rgba(0,0,0,0.9), transparent 85%)',
+          },
+        }}
+      >
+        {/* Soft fades / blends */}
+        <Box
+          sx={{
             position: 'fixed',
-            left: '1%',
-            top: '60%',
-            width: '60px',
-            height: '60px',
-            background: 'radial-gradient(circle, rgba(108, 63, 197, 0.15) 0%, transparent 70%)',
-            borderRadius: '50%',
+            top: '-10%',
+            left: '-8%',
+            width: '50%',
+            height: '45%',
+            background:
+              'radial-gradient(ellipse at center, rgba(185,251,192,0.12) 0%, transparent 70%)',
             zIndex: 0,
             pointerEvents: 'none',
-            animation: 'float 8s ease-in-out infinite reverse',
-          }} />
+            opacity: 0.9 - progress * 0.45,
+            transform: `translateY(${progress * 40}px)`,
+            transition: 'opacity 0.15s linear',
+          }}
+        />
+        <Box
+          sx={{
+            position: 'fixed',
+            top: '25%',
+            right: '-10%',
+            width: '42%',
+            height: '40%',
+            background:
+              'radial-gradient(ellipse at center, rgba(120,200,180,0.08) 0%, transparent 65%)',
+            zIndex: 0,
+            pointerEvents: 'none',
+            opacity: 0.35 + progress * 0.45,
+            transform: `translateY(${progress * -30}px)`,
+            transition: 'opacity 0.15s linear',
+          }}
+        />
+        <Box
+          sx={{
+            position: 'fixed',
+            bottom: '-5%',
+            left: '20%',
+            width: '50%',
+            height: '35%',
+            background:
+              'radial-gradient(ellipse at center, rgba(185,251,192,0.07) 0%, transparent 70%)',
+            zIndex: 0,
+            pointerEvents: 'none',
+            opacity: 0.25 + progress * 0.55,
+            transition: 'opacity 0.15s linear',
+          }}
+        />
 
-          {/* Right side decorative elements */}
-          <Box sx={{
+        {/* A few floating bubbles / shapes */}
+        <Box
+          sx={{
+            position: 'fixed',
+            top: '14%',
+            right: '5%',
+            width: 180,
+            height: 180,
+            background: 'radial-gradient(circle, rgba(185,251,192,0.1) 0%, transparent 70%)',
+            borderRadius: '50%',
+            zIndex: 0,
+            pointerEvents: 'none',
+            animation: 'float 8s ease-in-out infinite',
+            opacity: 0.85 - progress * 0.5,
+          }}
+        />
+        <Box
+          sx={{
+            position: 'fixed',
+            left: '2.5%',
+            top: '32%',
+            width: 84,
+            height: 84,
+            border: '1px solid rgba(185,251,192,0.14)',
+            borderRadius: '50%',
+            zIndex: 0,
+            pointerEvents: 'none',
+            animation: 'pulse 5.5s ease-in-out infinite',
+            opacity: 0.7 - progress * 0.25,
+          }}
+        />
+        <Box
+          sx={{
             position: 'fixed',
             right: '3%',
-            top: '40%',
-            width: '80px',
-            height: '80px',
-            background: 'linear-gradient(135deg, rgba(185, 251, 192, 0.08), rgba(108, 63, 197, 0.08))',
-            borderRadius: '20px',
+            top: '52%',
+            width: 64,
+            height: 64,
+            border: '1px solid rgba(185,251,192,0.12)',
+            borderRadius: 14,
             zIndex: 0,
             pointerEvents: 'none',
-            animation: 'rotate 10s linear infinite',
-          }} />
-
-          <Box sx={{
+            animation: 'rotate 20s linear infinite',
+            opacity: 0.4 + progress * 0.4,
+          }}
+        />
+        <Box
+          sx={{
             position: 'fixed',
-            right: '1%',
-            top: '80%',
-            width: '120px',
-            height: '120px',
-            background: 'radial-gradient(circle, rgba(185, 251, 192, 0.05) 0%, transparent 70%)',
+            left: '4%',
+            bottom: '18%',
+            width: 110,
+            height: 110,
+            background: 'radial-gradient(circle, rgba(185,251,192,0.07) 0%, transparent 70%)',
             borderRadius: '50%',
             zIndex: 0,
             pointerEvents: 'none',
-            animation: 'float 12s ease-in-out infinite',
-          }} />
+            animation: 'drift 10s ease-in-out infinite',
+            opacity: 0.3 + progress * 0.5,
+          }}
+        />
 
-          {/* Additional keyframes */}
-          <Box sx={{
-            '@keyframes pulse': {
-              '0%, 100%': { transform: 'scale(1)', opacity: 0.7 },
-              '50%': { transform: 'scale(1.2)', opacity: 0.3 },
-            },
-            '@keyframes rotate': {
-              '0%': { transform: 'rotate(0deg)' },
-              '100%': { transform: 'rotate(360deg)' },
-            },
-          }} />
+        <Navbar
+          onNavigate={scrollToSection}
+          refs={{ homeRef, experienceRef, projectsRef, extracurricularsRef, hobbiesRef, contactRef }}
+        />
 
+        <Box
+          sx={{
+            position: 'relative',
+            zIndex: 1,
+            maxWidth: 1080,
+            mx: 'auto',
+            px: { xs: 3, sm: 4 },
+            pt: { xs: 10, sm: 12 },
+            pb: 12,
+          }}
+        >
           <Box ref={homeRef}>
             <Home />
           </Box>
-          <Box ref={aboutRef} sx={{ pt: 4 }}>
-            <About />
-          </Box>
-          <Box ref={experienceRef} sx={{ pt: 6 }}>
+          <Box ref={experienceRef} sx={{ mt: { xs: 10, md: 14 } }}>
             <Experience />
           </Box>
-          <Box ref={projectsRef} sx={{ pt: 6 }}>
+          <Box ref={projectsRef} sx={{ mt: { xs: 10, md: 14 } }}>
             <Projects />
           </Box>
-          <Box ref={extracurricularsRef} sx={{ pt: 6 }}>
+          <Box ref={extracurricularsRef} sx={{ mt: { xs: 10, md: 14 } }}>
             <Extracurriculars />
           </Box>
-          <Box ref={hobbiesRef} sx={{ pt: 6 }}>
+          <Box ref={hobbiesRef} sx={{ mt: { xs: 10, md: 14 } }}>
             <Hobbies />
           </Box>
-          <Box ref={contactRef} sx={{ pt: 6 }}>
+          <Box ref={contactRef} sx={{ mt: { xs: 10, md: 14 } }}>
             <Contact />
           </Box>
         </Box>

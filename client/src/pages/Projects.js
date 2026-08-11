@@ -88,7 +88,9 @@ const Projects = () => {
                 className="project-media"
                 sx={{
                   width: '100%',
+                  maxWidth: 320,
                   aspectRatio: '16 / 10',
+                  maxHeight: 150,
                   borderRadius: 2,
                   overflow: 'hidden',
                   border: '1px solid rgba(255,255,255,0.08)',
@@ -96,7 +98,7 @@ const Projects = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  p: project.imageFit === 'contain' ? 2 : 0,
+                  p: project.imageFit === 'contain' ? 1.5 : 0,
                   transition: 'border-color 0.2s',
                 }}
               >

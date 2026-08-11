@@ -37,7 +37,7 @@ const activities = [
     image: '/images/purduelogo.png',
     date: '2024 — 2026',
     description:
-      'TA for CS 180, 182, 240 and ECON 210, 370 — office hours, exam proctoring, ygrading.',
+      'TA for CS 180, 182, 240 and ECON 210, 370 — office hours, exam proctoring, grading.',
   },
 ];
 

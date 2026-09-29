@@ -17,7 +17,7 @@ const experiences = [
     company: 'Crown Equipment',
     image: '/images/crown.png',
     date: 'Aug 2025 — May 2026',
-    description: 'Developed full-stack features for Crown\’s customer-facing sales platform, resolving over a dozen production bugs across the stack.',
+    description: 'Developed full-stack features for Crown’s customer-facing sales platform, resolving over a dozen production bugs across the stack.',
     tech: ['Java', 'Spring Boot', 'TypeScript', 'Angular.js', 'SQL Server'],
   },
   {
@@ -26,7 +26,7 @@ const experiences = [
     image: '/images/battelle.png',
     date: 'May 2025 — Aug 2025',
     description:
-      'Built microservices for a LIMS used across Battelle\’s national defense laboratories, streamlining technician workflows, data collection, and client reporting to improve operational efficiency across teams.',
+      'Built microservices for a LIMS used across Battelle’s national defense laboratories, streamlining technician workflows, data collection, and client reporting to improve operational efficiency across teams.',
     tech: ['C#', 'ASP.NET', 'React.js','SQL Server'],
   },
   {

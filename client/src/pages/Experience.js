@@ -9,7 +9,7 @@ const experiences = [
     image: '/images/LucidMotors_Logo.jpg',
     date: 'May 2026 — Aug 2026',
     description:
-      'Cloud platform powering the customer charging experience, overseeing the launch of a managed (V1G) charging program that helps customers reduce charging costs while supporting a healthier, less-constrained energy grid.',
+      'Cloud platform powering the customer charging experience, oversaw the launch of a managed (V1G) charging program that helps customers reduce charging costs while supporting a healthier, less-constrained energy grid.',
     tech: ['Go', 'MongoDB', 'gRPC', 'REST'],
   },
   {

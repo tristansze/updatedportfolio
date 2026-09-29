@@ -11,7 +11,7 @@ const activities = [
     date: '2025 — Present',
     link: 'https://www.cs.purdue.edu/student-experience/meet-team.html',
     description:
-      'Connect students with academic resources and research opportunities. Speak at information sessions for prospective students and families.',
+      'Connecting students with academic support, professional development, and research opportunities. Share my experiences at information sessions for prospective students and their families.',
   },
   {
     title: 'Executive Board',
@@ -20,24 +20,30 @@ const activities = [
     date: '2025 — Present',
     link: 'https://boilermake.org/',
     description:
-      'Build and maintain our website and mobile app for Purdue\'s largest annual hackathon.',
+      'Purdue\'s largest annual hackathon featuring over 500 attendees and awarding over $10,000 in prizes. I\'m a part of our development team responsible for building and maintaining our website and application portal.',
   },
   {
     title: 'Treasurer & Initiative Lead',
-    org: 'Undergraduate Student Board',
+    org: 'CS Undergraduate Student Board (USB)',
     image: '/images/usb.png',
     date: '2024 — Present',
     link: 'https://www.purdueusb.com/',
     description:
-      'Manage club funding and budget. Dedicated to improving the student experience through a variety of social and academic initiatives.',
+      'USB is a group of students dedicated to improving the student experience in the CS department at Purdue. Board members serve as liaison between students and faculty identifying gaps in the student experience and addressing them through a variety of initiatives.',
   },
   {
     title: 'Undergraduate Teaching Assistant',
     org: 'Purdue University',
     image: '/images/purduelogo.png',
     date: '2024 — 2026',
-    description:
-      'TA for CS 180, 182, 240 and ECON 210, 370 — office hours, exam proctoring, grading.',
+    description: 'Hosted office hours, proctored exams, and graded assignments',
+    courses: [
+      'CS 180 — Object-Oriented Programming',
+      'CS 182 — Discrete Math',
+      'CS 240 — Programming in C',
+      'ECON 210 — Principles of Economics',
+      'ECON 370 — International Trade',
+    ],
   },
 ];
 
@@ -120,16 +126,38 @@ const Extracurriculars = () => {
               <Typography sx={{ color: '#9a9a9a', fontSize: '0.9rem', mb: 0.85 }}>
                 {act.title}
               </Typography>
-              <Typography
-                sx={{
-                  color: '#7d7d7d',
-                  fontSize: '0.92rem',
-                  lineHeight: 1.55,
-                  maxWidth: 560,
-                }}
-              >
-                {act.description}
-              </Typography>
+              {act.description && (
+                <Typography
+                  sx={{
+                    color: '#7d7d7d',
+                    fontSize: '0.92rem',
+                    lineHeight: 1.55,
+                    maxWidth: 560,
+                    mb: act.courses ? 1 : 0,
+                  }}
+                >
+                  {act.description}
+                </Typography>
+              )}
+              {act.courses && (
+                <Box
+                  component="ul"
+                  sx={{
+                    m: 0,
+                    pl: 2.25,
+                    color: '#7d7d7d',
+                    fontSize: '0.92rem',
+                    lineHeight: 1.6,
+                    maxWidth: 560,
+                  }}
+                >
+                  {act.courses.map((course) => (
+                    <Box component="li" key={course} sx={{ mb: 0.25 }}>
+                      {course}
+                    </Box>
+                  ))}
+                </Box>
+              )}
               <Typography
                 sx={{
                   color: '#666',

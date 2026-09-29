@@ -113,8 +113,8 @@ const Home = () => {
             mb: 1.5,
             maxWidth: 500,
           }}
-        >
-          Senior at Purdue studying Computer Science and Economics. Experience building full-stack products, designing cloud-native infrastructure, and developing scalable backend systems.
+        > 
+         Senior at Purdue studying Computer Science and Economics. Experience delivering full-stack products, building cloud-native microservices, and developing scalable backend systems.
         </Typography>
 
         <Typography

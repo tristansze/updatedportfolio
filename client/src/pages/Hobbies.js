@@ -6,18 +6,18 @@ const hobbies = [
   {
     title: 'Fitness',
     description:
-      'Lifting, rock climbing, running, and anything outdoors.',
+      'Anything with the outdoors. Recently hiking, rock climbing, and yoga.',
     images: [
-      { src: '/images/olentangyGame.jpg', tip: 'Soccer' },
       { src: '/images/hockingclimbing.png', tip: 'Hocking Hills State Park' },
       { src: '/images/rafting.JPG', tip: 'New River Gorge National Park' },
       { src: '/images/haileakala2.png', tip: 'Haileakala National Park' },
+      { src: '/images/vernalfalls.jpg', tip: 'Yosemite National Park'}
     ],
   },
   {
     title: 'Music',
     description:
-      'R&B, rock, house — always digging for new artists.',
+      'Listening to a bit of everything.',
     images: [
       { src: '/images/currents.jpeg', tip: 'Currents - Tame Impala' },
       { src: '/images/rainbowcover.png', tip: 'In Rainbows - Radiohead' },
@@ -28,23 +28,23 @@ const hobbies = [
   {
     title: 'Travel',
     description:
-      'New places, good food, and a bit of adventure. Recently Japan, Vietnam, and Hawaii.',
+      'New places, new people, and a bit of adventure.',
     images: [
       { src: '/images/ninhbinh.jpg', tip: 'Ninh Binh, Vietnam' },
       { src: '/images/selfiehiroshima.JPG', tip: 'Hiroshima, Japan' },
-      { src: '/images/lanikai.png', tip: 'Lanikai, Hawaii' },
+      { src: '/images/pointlobos.jpg', tip: 'Carmel, California' },
       { src: '/images/skydiving.JPG', tip: 'North Shore, Hawaii' },
     ],
   },
   {
     title: 'Media',
     description:
-      'Movies, TV, Anime, & Broadway. Always open to recommendations.',
+      'Movies, TV, Anime. Always open to recommendations.',
     images: [
       { src: '/images/andor.jpeg', tip: 'Andor' },
       { src: '/images/perfectdays.jpeg', tip: 'Perfect Days' },
       { src: '/images/geass.jpg', tip: 'Code Geass' },
-      { src: '/images/hadestown.jpeg', tip: 'Hadestown' },
+      { src: '/images/vinland.jpg', tip: 'Vinland Saga' },
     ],
   },
 ];

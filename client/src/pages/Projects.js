@@ -5,12 +5,22 @@ import SectionTitle from '../components/SectionTitle';
 
 const projects = [
   {
+    title: 'OpenCourt',
+    dates: 'In Progress',
+    description:
+      'A mobile app making it easier to find available pickleball courts at Purdue.',
+    image: '/images/pickleball.jpg',
+    link: 'https://github.com/tristansze/OpenCourt',
+    tech: ['Swift', 'Python', 'PostgreSQL'],
+  },
+  {
     title: 'Harmoniq',
     dates: '2026',
     description:
-      'A social platform for music lovers. Writing reviews, playlists, and discovering what to play next.',
+      'A social platform for music lovers. Writing reviews, curating playlists, and discovering what to play next.',
     image: '/images/harmoniq2.png',
     link: 'https://github.com/NoiceBroice/Harmoniq',
+    tech: ['React.js', 'Node.js', 'Express.js', 'Supabase'],
   },
   {
     title: 'Infrastructure Monitoring',
@@ -19,14 +29,16 @@ const projects = [
       'Prometheus monitoring across a VM cluster with a Grafana dashboard for CPU, memory, disk, and network.',
     image: '/images/infraproject.png',
     link: 'https://github.com/tristansze/inframonitoring',
+    tech: ['Prometheus', 'Grafana', 'Linux', 'Docker'],
   },
   {
     title: 'Motion',
     dates: '2025',
     description:
-      'A social web app for sharing experiences and competing with friends. Next.js, Supabase, Prisma, and MongoDB.',
+      'A social web-app redefining how people stay connected and active.',
     image: '/images/motion2.png',
     link: 'https://www.motion.lat',
+    tech: ['TypeScript', 'Node.js', 'Next.js', 'Prisma', 'Supabase', 'MongoDB'],
   },
   {
     title: 'Shell',
@@ -35,6 +47,7 @@ const projects = [
       'A custom Unix shell with piping, subshells, process substitution, and signal handling.',
     image: '/images/vim.png',
     link: null,
+    tech: ['C', 'C++', 'Unix', 'Lex', 'Yacc'],
   },
   {
     title: 'Compiler',
@@ -43,6 +56,7 @@ const projects = [
       'A compiler targeting x86-64 assembly. Supporting lexing, parsing, semantic analysis, and code generation.',
     image: '/images/profiler.png',
     link: null,
+    tech: ['C', 'x86-64', 'Lex', 'Yacc'],
   },
 ];
 
@@ -71,7 +85,7 @@ const Projects = () => {
 
           return (
             <Box
-              key={project.title}
+              key={`${project.title}-${project.dates}`}
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -156,6 +170,35 @@ const Projects = () => {
                 >
                   {project.description}
                 </Typography>
+                {project.tech?.length > 0 && (
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: 0.75,
+                      mt: 1.25,
+                    }}
+                  >
+                    {project.tech.map((t) => (
+                      <Box
+                        key={t}
+                        component="span"
+                        sx={{
+                          px: 1,
+                          py: 0.35,
+                          fontSize: '0.75rem',
+                          color: '#b9fbc0',
+                          border: '1px solid rgba(185,251,192,0.28)',
+                          borderRadius: 1,
+                          background: 'rgba(185,251,192,0.06)',
+                          letterSpacing: '0.02em',
+                        }}
+                      >
+                        {t}
+                      </Box>
+                    ))}
+                  </Box>
+                )}
               </Box>
             </Box>
           );

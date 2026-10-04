@@ -9,7 +9,7 @@ const experiences = [
     image: '/images/LucidMotors_Logo.jpg',
     date: 'May 2026 — Aug 2026',
     description:
-      'Cloud platform powering the customer charging experience, oversaw the launch of a managed (V1G) charging program that helps customers reduce charging costs while supporting a healthier, less-constrained energy grid.',
+      'Cloud platform powering the customer charging experience, oversaw the launch of a managed (V1G) charging program helping customers reduce charging costs while supporting a healthier, less-constrained energy grid.',
     tech: ['Go', 'MongoDB', 'gRPC', 'REST'],
   },
   {
@@ -17,7 +17,7 @@ const experiences = [
     company: 'Crown Equipment',
     image: '/images/crown.png',
     date: 'Aug 2025 — May 2026',
-    description: 'Developed full-stack features for Crown’s customer-facing sales platform, resolving over a dozen production bugs across the stack.',
+    description: 'Developed full-stack features for Crown’s customer-facing sales platform and resolved over a dozen bugs across the stack.',
     tech: ['Java', 'Spring Boot', 'TypeScript', 'Angular.js', 'SQL Server'],
   },
   {
@@ -26,7 +26,7 @@ const experiences = [
     image: '/images/battelle.png',
     date: 'May 2025 — Aug 2025',
     description:
-      'Built microservices for a LIMS used across Battelle’s national defense laboratories, streamlining technician workflows, data collection, and client reporting to improve operational efficiency across teams.',
+      'Built microservices for a LIMS used across Battelle’s national defense laboratories, streamlining technician workflows, data collection, and client reporting to improve operational efficiency.',
     tech: ['C#', 'ASP.NET', 'React.js','SQL Server'],
   },
   {
@@ -35,7 +35,7 @@ const experiences = [
     image: '/images/facai.png',
     date: 'Jan 2024 — Aug 2024',
     description:
-      'Leveraged machine learning and statistics to improve understanding of global forestry data. Assisted in the training and tuning of a knn model aimed at imputing missing forestry data in remote and inaccesible regions.',
+      'Leveraged machine learning and statistics to improve understanding of global forestry data. Assisted in the training and tuning of a knn model imputing missing forestry data in remote and inaccesible regions.',
     tech: ['Python', 'R'],
   },
   {
@@ -44,7 +44,7 @@ const experiences = [
     image: '/images/humncapital.png',
     date: 'Jan 2024 — May 2024',
     description:
-      'Deployed a sentiment-analysis model to analyze manager performance in 1-1 meetings with the goal of improving manager effectiveness in their interactions with employees.',
+      'Deployed a sentiment-analysis model analyzing manager performance in 1-1 meetings with the goal of improving manager effectiveness in their interactions with employees.',
     tech: ['Python', 'TensorFlow', 'OpenCV', "React.js"],
   },
 ];
